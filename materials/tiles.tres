@@ -1,0 +1,13 @@
+[gd_resource type="SpatialMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://pbrs/Tiles074_1K-JPG/Tiles074_1K_Roughness.jpg" type="Texture" id=1]
+[ext_resource path="res://pbrs/Tiles074_1K-JPG/Tiles074_1K_Color.jpg" type="Texture" id=2]
+[ext_resource path="res://pbrs/Tiles074_1K-JPG/Tiles074_1K_NormalDX.jpg" type="Texture" id=3]
+
+[resource]
+albedo_texture = ExtResource( 2 )
+roughness_texture = ExtResource( 1 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 3 )
+uv1_scale = Vector3( 10, 10, 1 )

@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_Roughness.jpg" type="Texture" id=2]
+[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_Metalness.jpg" type="Texture" id=3]
+[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_Color.jpg" type="Texture" id=4]
+[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_Displacement.jpg" type="Texture" id=5]
+[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_NormalGL.jpg" type="Texture" id=6]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 4 )
+metallic = 0.87
+metallic_texture = ExtResource( 3 )
+roughness_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 6 )
+depth_enabled = true
+depth_scale = -0.05
+depth_deep_parallax = true
+depth_min_layers = 8
+depth_max_layers = 32
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 5 )
+
+[sub_resource type="SphereShape" id=2]
+
+[node name="player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
