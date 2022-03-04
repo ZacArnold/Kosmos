@@ -1,33 +1,53 @@
 extends KinematicBody
 
-
+#Var setup
+const MAXSPEED = 12
+const FRICTION = 0.075
+const ACCELERATION = 0.075
+const JUMPSPEED = 15
+const GRAVITY = 0.98
 var velocity = Vector3.ZERO
-var speed = 10
-var friction = 0.05
-var acceleration = 0.1
+var rotateVelocity = Vector3.ZERO
 
 func _physics_process(delta):
-	var input_velocity = Vector3.ZERO
+	var inputVelocity = Vector3.ZERO
+	var inputRotateVelocity = Vector3.ZERO
 	
-	if Input.is_action_pressed("up"):
-		input_velocity.z -= 1
-		$MeshInstance.rotate_x(deg2rad(-10))
-	if Input.is_action_pressed("down"):
-		input_velocity.z += 1
-		$MeshInstance.rotate_x(deg2rad(10))
+	#2D Movement Control
+	if Input.is_action_pressed("forward"):
+		inputVelocity.z -= 1
+		inputRotateVelocity.x -= 1
+	if Input.is_action_pressed("backward"):
+		inputVelocity.z += 1
+		inputRotateVelocity.x += 1
 	if Input.is_action_pressed("left"):
-		input_velocity.x -= 1
-		$MeshInstance.rotate_z(deg2rad(10))
+		inputVelocity.x -= 1
+		inputRotateVelocity.z += 1
 	if Input.is_action_pressed("right"):
-		input_velocity.x += 1
-		$MeshInstance.rotate_z(deg2rad(-10))
+		inputVelocity.x += 1
+		inputRotateVelocity.z -= 1
 	
-	input_velocity = input_velocity.normalized() * speed
+	#Velocity maxed at set speed
+	inputVelocity = inputVelocity.normalized() * MAXSPEED
+	inputRotateVelocity = inputRotateVelocity.normalized() * MAXSPEED
 	
 	# If there's input, accelerate to the input velocity
-	if input_velocity.length() > 0:
-		velocity = velocity.linear_interpolate(input_velocity, acceleration)
+	if inputVelocity.length() > 0:
+		velocity = velocity.linear_interpolate(inputVelocity, ACCELERATION)
+		rotateVelocity = rotateVelocity.linear_interpolate(inputRotateVelocity, ACCELERATION)
 	else:
 	# If there's no input, slow down to (0, 0)
-		velocity = velocity.linear_interpolate(Vector3.ZERO, friction)
+		velocity = velocity.linear_interpolate(Vector3.ZERO, FRICTION)
+		rotateVelocity = rotateVelocity.linear_interpolate(Vector3.ZERO, FRICTION)
+	
+	#Jumping movement control
+	if Input.is_action_pressed("jump"):
+		velocity.y = JUMPSPEED
+	
+	#Gravity
+	velocity.y -= GRAVITY * delta
+	
+	#Moves and rotates the player with accelerating and deccelerating velocity
 	velocity = move_and_slide(velocity)
+	$MeshInstance.rotate_z(deg2rad(rotateVelocity.z))
+	$MeshInstance.rotate_x(deg2rad(rotateVelocity.x))

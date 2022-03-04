@@ -3,7 +3,7 @@
 [ext_resource path="res://materials/marble.tres" type="Material" id=1]
 [ext_resource path="res://materials/plankClean.tres" type="Material" id=2]
 [ext_resource path="res://elements/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://materials/plaster.tres" type="Material" id=4]
+[ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://materials/tiles.tres" type="Material" id=5]
 [ext_resource path="res://materials/plank2.tres" type="Material" id=6]
 [ext_resource path="res://materials/planksAcacia.tres" type="Material" id=7]
@@ -42,70 +42,10 @@ material/0 = ExtResource( 5 )
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
 shape = SubResource( 2 )
 
-[node name="Wall" type="StaticBody" parent="platform"]
-transform = Transform( 0.0670985, 0, 0, 0, 2.60514, 0, 0, 0, 1, -18.6779, 3.18844, 0 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="floorMeshInstance" type="MeshInstance" parent="platform/Wall"]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = ExtResource( 4 )
-
-[node name="floorCollisionShape" type="CollisionShape" parent="platform/Wall"]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-shape = SubResource( 2 )
-
-[node name="Wall2" type="StaticBody" parent="platform"]
-transform = Transform( 0.0670985, 0, 0, 0, 2.60514, 0, 0, 0, 1, 18.9196, 3.18844, 0 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="floorMeshInstance" type="MeshInstance" parent="platform/Wall2"]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = ExtResource( 4 )
-
-[node name="floorCollisionShape" type="CollisionShape" parent="platform/Wall2"]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-shape = SubResource( 2 )
-
-[node name="Wall3" type="StaticBody" parent="platform"]
-transform = Transform( -2.93297e-09, 0, -1, 0, 2.60514, 0, 0.0670985, 0, -4.37114e-08, 0.05583, 3.18844, -18.7337 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="floorMeshInstance" type="MeshInstance" parent="platform/Wall3"]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = ExtResource( 4 )
-
-[node name="floorCollisionShape" type="CollisionShape" parent="platform/Wall3"]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-shape = SubResource( 2 )
-
-[node name="Wall4" type="StaticBody" parent="platform"]
-transform = Transform( -2.93297e-09, 0, -1, 0, 2.60514, 0, 0.0670985, 0, -4.37114e-08, 0.05583, 3.18844, 18.7337 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="floorMeshInstance" type="MeshInstance" parent="platform/Wall4"]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = ExtResource( 4 )
-
-[node name="floorCollisionShape" type="CollisionShape" parent="platform/Wall4"]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
-shape = SubResource( 2 )
-
 [node name="rigidBodies" type="Node" parent="."]
 
 [node name="ball" type="RigidBody" parent="rigidBodies"]
-transform = Transform( 1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 31.7531, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.7531, 0 )
 mass = 2.8
 physics_material_override = SubResource( 8 )
 __meta__ = {
@@ -113,60 +53,2066 @@ __meta__ = {
 }
 
 [node name="MeshInstance" type="MeshInstance" parent="rigidBodies/ball"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 mesh = SubResource( 6 )
 material/0 = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="rigidBodies/ball"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 shape = SubResource( 7 )
 
-[node name="block2" type="RigidBody" parent="rigidBodies"]
-transform = Transform( 0.559193, 0.214571, 0.800789, 0, 0.965926, -0.258819, -0.829038, 0.14473, 0.540139, 2, 34.7531, 1 )
+[node name="blocks" type="Spatial" parent="rigidBodies"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="block1" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, 0.5 )
 mass = 2.8
 physics_material_override = SubResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/block2"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block1"]
 mesh = SubResource( 3 )
 material/0 = ExtResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/block2"]
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block1"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 4 )
 
-[node name="block3" type="RigidBody" parent="rigidBodies"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.7531, 0 )
+[node name="block2" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.5, 0.5 )
 mass = 2.8
 physics_material_override = SubResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/block3"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block2"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block2"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block3" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block3"]
 mesh = SubResource( 3 )
 material/0 = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/block3"]
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block3"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 4 )
 
-[node name="block4" type="RigidBody" parent="rigidBodies"]
-transform = Transform( 0.559193, 0.214571, 0.800789, 0, 0.965926, -0.258819, -0.829038, 0.14473, 0.540139, 2, 26.7531, 1 )
+[node name="block4" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.5, 1.5 )
 mass = 2.8
 physics_material_override = SubResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/block4"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block4"]
 mesh = SubResource( 3 )
 material/0 = ExtResource( 7 )
 
-[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/block4"]
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block4"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block5" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block5"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block5"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block6" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block6"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block6"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block7" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block7"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block7"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block8" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block8"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block8"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block9" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block9"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block9"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block10" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block10"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block10"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block11" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block11"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block11"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block12" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block12"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block12"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block13" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block13"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block13"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block14" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block14"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block14"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block15" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block15"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block15"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block16" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block16"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block16"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block17" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block17"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block17"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block18" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block18"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block18"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block19" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block19"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block19"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block20" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block20"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block20"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block21" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block21"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block21"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block22" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block22"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block22"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block23" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block23"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block23"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block24" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block24"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block24"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block25" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block25"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block25"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block26" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block26"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block26"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block27" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block27"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block27"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block28" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block28"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block28"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block29" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block29"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block29"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block30" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block30"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block30"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block31" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block31"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block31"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block32" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block32"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block32"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block33" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block33"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block33"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block34" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block34"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block34"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block35" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block35"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block35"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block36" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block36"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block36"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block37" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block37"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block37"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block38" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block38"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block38"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block39" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block39"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block39"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block40" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block40"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block40"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block41" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block41"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block41"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block42" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block42"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block42"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block43" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block43"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block43"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block44" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block44"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block44"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block45" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block45"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block45"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block46" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block46"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block46"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block47" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block47"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block47"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block48" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block48"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block48"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block49" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block49"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block49"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block50" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block50"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block50"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block51" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block51"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block51"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block52" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block52"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block52"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block53" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block53"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block53"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block54" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block54"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block54"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block55" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block55"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block55"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block56" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block56"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block56"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block57" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block57"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block57"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block58" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block58"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block58"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block59" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block59"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block59"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block60" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block60"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block60"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block61" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block61"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block61"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block62" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block62"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block62"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block63" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block63"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block63"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block64" type="RigidBody" parent="rigidBodies/blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks/block64"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks/block64"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="blocks2" type="Spatial" parent="rigidBodies"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0 )
+
+[node name="block1" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block1"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block1"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block2" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block2"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block2"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block3" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block3"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block3"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block4" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block4"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block4"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block5" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block5"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block5"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block6" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block6"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block6"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block7" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block7"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block7"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block8" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block8"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block8"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block9" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block9"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block9"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block10" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block10"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block10"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block11" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block11"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block11"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block12" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block12"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block12"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block13" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block13"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block13"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block14" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block14"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block14"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block15" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block15"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block15"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block16" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block16"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block16"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block17" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block17"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block17"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block18" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block18"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block18"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block19" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block19"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block19"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block20" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block20"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block20"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block21" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block21"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block21"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block22" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block22"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block22"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block23" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block23"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block23"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block24" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block24"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block24"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block25" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block25"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block25"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block26" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block26"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block26"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block27" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block27"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block27"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block28" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block28"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block28"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block29" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block29"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block29"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block30" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block30"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block30"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block31" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block31"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block31"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block32" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block32"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block32"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block33" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block33"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block33"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block34" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block34"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block34"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block35" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block35"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block35"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block36" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block36"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block36"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block37" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block37"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block37"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block38" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block38"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block38"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block39" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block39"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block39"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block40" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block40"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block40"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block41" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block41"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block41"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block42" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block42"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block42"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block43" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block43"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block43"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block44" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block44"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block44"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block45" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block45"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block45"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block46" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block46"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block46"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block47" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block47"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block47"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block48" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block48"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block48"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block49" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block49"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block49"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block50" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block50"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block50"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block51" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block51"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block51"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block52" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block52"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block52"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block53" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block53"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block53"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block54" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block54"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block54"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block55" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block55"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block55"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block56" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block56"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block56"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block57" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block57"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block57"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block58" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block58"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block58"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block59" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block59"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block59"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block60" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block60"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block60"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block61" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block61"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block61"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block62" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -1.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block62"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block62"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block63" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block63"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block63"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="block64" type="RigidBody" parent="rigidBodies/blocks2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -0.5 )
+mass = 2.8
+physics_material_override = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="rigidBodies/blocks2/block64"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rigidBodies/blocks2/block64"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 4 )
 
 [node name="camera" type="Camera" parent="."]
@@ -174,8 +2120,20 @@ transform = Transform( 1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642787, 0
 current = true
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 16 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 27.9209, 35.4405 )
+transform = Transform( 1, 0, 0, 0, -0.573576, 0.819152, 0, -0.819152, -0.573576, 0, 30, -35 )
 shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+mesh_library = ExtResource( 4 )
+cell_size = Vector3( 2, 1, 2 )
+data = {
+"cells": PoolIntArray( 65545, 0, 0, 131062, 0, 0, 65545, 1, 0, 131062, 1, 0, 65545, 2, 0, 131062, 2, 0, 65545, 3, 0, 131062, 3, 0, 65545, 4, 0, 131062, 4, 0, 65545, 5, 0, 131062, 5, 0, 65545, 6, 0, 131062, 6, 0, 65545, 7, 0, 131062, 7, 0, 65545, 8, 0, 131062, 8, 0, 65536, 9, 0, 65537, 9, 0, 65538, 9, 0, 65539, 9, 0, 65540, 9, 0, 65541, 9, 0, 65542, 9, 0, 65543, 9, 0, 65544, 9, 0, 65545, 9, 0, 131062, 9, 0, 131063, 9, 0, 131064, 9, 0, 131065, 9, 0, 131066, 9, 0, 131067, 9, 0, 131068, 9, 0, 131069, 9, 0, 131070, 9, 0, 131071, 9, 0, 65536, 65526, 0, 65537, 65526, 0, 65538, 65526, 0, 65539, 65526, 0, 65540, 65526, 0, 65541, 65526, 0, 65542, 65526, 0, 65543, 65526, 0, 65544, 65526, 0, 65545, 65526, 0, 131062, 65526, 0, 131063, 65526, 0, 131064, 65526, 0, 131065, 65526, 0, 131066, 65526, 0, 131067, 65526, 0, 131068, 65526, 0, 131069, 65526, 0, 131070, 65526, 0, 131071, 65526, 0, 65545, 65527, 0, 131062, 65527, 0, 65545, 65528, 0, 131062, 65528, 0, 65545, 65529, 0, 131062, 65529, 0, 65545, 65530, 0, 131062, 65530, 0, 65545, 65531, 0, 131062, 65531, 0, 65545, 65532, 0, 131062, 65532, 0, 65545, 65533, 0, 131062, 65533, 0, 65545, 65534, 0, 131062, 65534, 0, 65545, 65535, 0, 131062, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
