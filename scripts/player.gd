@@ -4,11 +4,12 @@ extends KinematicBody
 const MAXSPEED = 12
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPSPEED = 15
-const GRAVITY = 0.98
+const JUMPSPEED = 50
+const GRAVITY = 98
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
 
+#Physics process loop
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO
 	var inputRotateVelocity = Vector3.ZERO
@@ -41,13 +42,14 @@ func _physics_process(delta):
 		rotateVelocity = rotateVelocity.linear_interpolate(Vector3.ZERO, FRICTION)
 	
 	#Jumping movement control
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMPSPEED
 	
 	#Gravity
 	velocity.y -= GRAVITY * delta
+	print(velocity)
 	
 	#Moves and rotates the player with accelerating and deccelerating velocity
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity,Vector3.UP)
 	$MeshInstance.rotate_z(deg2rad(rotateVelocity.z))
 	$MeshInstance.rotate_x(deg2rad(rotateVelocity.x))
