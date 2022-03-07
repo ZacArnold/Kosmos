@@ -4,12 +4,11 @@ extends KinematicBody
 const MAXSPEED = 12
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPSPEED = 50
-const GRAVITY = 98
+const JUMPSPEED = 50/2
+const GRAVITY = 98/1.5
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
 
-#Physics process loop
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO
 	var inputRotateVelocity = Vector3.ZERO
@@ -47,7 +46,6 @@ func _physics_process(delta):
 	
 	#Gravity
 	velocity.y -= GRAVITY * delta
-	print(velocity)
 	
 	#Moves and rotates the player with accelerating and deccelerating velocity
 	velocity = move_and_slide(velocity,Vector3.UP)
