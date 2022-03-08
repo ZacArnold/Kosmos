@@ -4,7 +4,7 @@
 [ext_resource path="res://materials/plankClean.tres" type="Material" id=2]
 [ext_resource path="res://elements/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=4]
-[ext_resource path="res://materials/tiles.tres" type="Material" id=5]
+[ext_resource path="res://materials/marbleFloor.tres" type="Material" id=5]
 [ext_resource path="res://materials/plank2.tres" type="Material" id=6]
 [ext_resource path="res://materials/planksAcacia.tres" type="Material" id=7]
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
@@ -6426,7 +6426,7 @@ __meta__ = {
 }
 
 [node name="fallZone" type="Area" parent="."]
-transform = Transform( 50, 0, 0, 0, 1, 0, 0, 0, 50, 0, -25, 0 )
+transform = Transform( 75, 0, 0, 0, 1, 0, 0, 0, 75, 0, -25, 0 )
 script = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="fallZone"]

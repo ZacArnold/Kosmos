@@ -4,14 +4,41 @@ extends KinematicBody
 const MAXSPEED = 12
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPSPEED = 50/2
+const JUMPSPEED = 30
 const GRAVITY = 98/1.5
+var pivotSpeed = 0
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
+var pivotVelocity = Vector3.ZERO
 
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO
 	var inputRotateVelocity = Vector3.ZERO
+	var inputPivotVelocity = Vector3.ZERO
+	
+	#Rotation Control
+	if Input.is_action_just_pressed("camera_pivot_left"):
+		pivotSpeed = 90
+		inputPivotVelocity.y -= 1
+	if Input.is_action_just_pressed("camera_pivot_right"):
+		pivotSpeed = 90
+		inputPivotVelocity.y += 1
+	
+	#Velocity maxed at set speed
+	inputPivotVelocity = inputPivotVelocity.normalized() * pivotSpeed
+	
+	# If there's input, accelerate to the input velocity
+	if inputPivotVelocity.length() > 0:
+		pivotVelocity = pivotVelocity.linear_interpolate(inputPivotVelocity, ACCELERATION)
+	elif inputPivotVelocity.length() < 0:
+		pivotVelocity = pivotVelocity.linear_interpolate(inputPivotVelocity, ACCELERATION)
+	else:
+	# If there's no input, slow down to (0, 0)
+		pivotVelocity = pivotVelocity.linear_interpolate(Vector3.ZERO, FRICTION)
+	
+	#Rotates Camera
+	rotate_y(deg2rad(pivotVelocity.y))
+	
 	
 	#2D Movement Control
 	if Input.is_action_pressed("forward"):
