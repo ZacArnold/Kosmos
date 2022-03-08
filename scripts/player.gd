@@ -37,7 +37,6 @@ func _physics_process(delta):
 	#Rotates Camera
 	rotate_y(deg2rad(pivotVelocity.y))
 	
-	print(rotation_degrees.y)
 	
 	##########2D Movement Control##########
 	if rotation_degrees.y < 90 and rotation_degrees.y > -90:
