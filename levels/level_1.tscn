@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://materials/marble.tres" type="Material" id=1]
 [ext_resource path="res://materials/plankClean.tres" type="Material" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://materials/plank2.tres" type="Material" id=6]
 [ext_resource path="res://materials/planksAcacia.tres" type="Material" id=7]
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
+[ext_resource path="res://elements/goal.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -6431,5 +6432,8 @@ script = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="fallZone"]
 shape = SubResource( 9 )
+
+[node name="goal" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -19 )
 
 [connection signal="body_entered" from="fallZone" to="fallZone" method="_on_fallZone_body_entered"]

@@ -6,7 +6,7 @@ const FRICTION = 0.075
 const ACCELERATION = 0.075
 const JUMPSPEED = 30
 const GRAVITY = 98/1.5
-var pivotSpeed = 0
+const PIVOTSPEED = 90
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
 var pivotVelocity = Vector3.ZERO
@@ -16,16 +16,14 @@ func _physics_process(delta):
 	var inputRotateVelocity = Vector3.ZERO
 	var inputPivotVelocity = Vector3.ZERO
 	
-	#Rotation Control
+	##########Rotation Control##########
 	if Input.is_action_just_pressed("camera_pivot_left"):
-		pivotSpeed = 90
 		inputPivotVelocity.y -= 1
 	if Input.is_action_just_pressed("camera_pivot_right"):
-		pivotSpeed = 90
 		inputPivotVelocity.y += 1
 	
 	#Velocity maxed at set speed
-	inputPivotVelocity = inputPivotVelocity.normalized() * pivotSpeed
+	inputPivotVelocity = inputPivotVelocity.normalized() * PIVOTSPEED
 	
 	# If there's input, accelerate to the input velocity
 	if inputPivotVelocity.length() > 0:
@@ -39,20 +37,64 @@ func _physics_process(delta):
 	#Rotates Camera
 	rotate_y(deg2rad(pivotVelocity.y))
 	
+	print(rotation_degrees.y)
 	
-	#2D Movement Control
-	if Input.is_action_pressed("forward"):
-		inputVelocity.z -= 1
-		inputRotateVelocity.x -= 1
-	if Input.is_action_pressed("backward"):
-		inputVelocity.z += 1
-		inputRotateVelocity.x += 1
-	if Input.is_action_pressed("left"):
-		inputVelocity.x -= 1
-		inputRotateVelocity.z += 1
-	if Input.is_action_pressed("right"):
-		inputVelocity.x += 1
-		inputRotateVelocity.z -= 1
+	##########2D Movement Control##########
+	if rotation_degrees.y < 90 and rotation_degrees.y > -90:
+		if Input.is_action_pressed("forward"):
+			inputVelocity.z -= 1
+			inputRotateVelocity.x -= 1
+		if Input.is_action_pressed("backward"):
+			inputVelocity.z += 1
+			inputRotateVelocity.x += 1
+		if Input.is_action_pressed("left"):
+			inputVelocity.x -= 1
+			inputRotateVelocity.z += 1
+		if Input.is_action_pressed("right"):
+			inputVelocity.x += 1
+			inputRotateVelocity.z -= 1
+	
+	if rotation_degrees.y < 180 and rotation_degrees.y > 0:
+		if Input.is_action_pressed("forward"):
+			inputVelocity.x -= 1
+			inputRotateVelocity.x -= 1
+		if Input.is_action_pressed("backward"):
+			inputVelocity.x += 1
+			inputRotateVelocity.x += 1
+		if Input.is_action_pressed("left"):
+			inputVelocity.z -= 1
+			inputRotateVelocity.z += 1
+		if Input.is_action_pressed("right"):
+			inputVelocity.z += 1
+			inputRotateVelocity.z -= 1
+	
+	if rotation_degrees.y < 0 and rotation_degrees.y > -180:
+		if Input.is_action_pressed("forward"):
+			inputVelocity.x += 1
+			inputRotateVelocity.x -= 1
+		if Input.is_action_pressed("backward"):
+			inputVelocity.x -= 1
+			inputRotateVelocity.x += 1
+		if Input.is_action_pressed("left"):
+			inputVelocity.z += 1
+			inputRotateVelocity.z += 1
+		if Input.is_action_pressed("right"):
+			inputVelocity.z -= 1
+			inputRotateVelocity.z -= 1
+	
+	if rotation_degrees.y < -90 and rotation_degrees.y > 90:
+		if Input.is_action_pressed("forward"):
+			inputVelocity.z += 1
+			inputRotateVelocity.x -= 1
+		if Input.is_action_pressed("backward"):
+			inputVelocity.z -= 1
+			inputRotateVelocity.x += 1
+		if Input.is_action_pressed("left"):
+			inputVelocity.x += 1
+			inputRotateVelocity.z += 1
+		if Input.is_action_pressed("right"):
+			inputVelocity.x -= 1
+			inputRotateVelocity.z -= 1
 	
 	#Velocity maxed at set speed
 	inputVelocity = inputVelocity.normalized() * MAXSPEED
