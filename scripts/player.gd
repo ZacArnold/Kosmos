@@ -4,10 +4,11 @@ extends KinematicBody
 const MAXSPEED = 12
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPSPEED = 30
+const JUMPPOWER = 30
 const GRAVITY = 98/1.5
 const PIVOTSPEED = 90
 var velocity = Vector3.ZERO
+var playerDirection = "-Z"
 var rotateVelocity = Vector3.ZERO
 var pivotVelocity = Vector3.ZERO
 
@@ -19,8 +20,10 @@ func _physics_process(delta):
 	##########Rotation Control##########
 	if Input.is_action_just_pressed("camera_pivot_left"):
 		inputPivotVelocity.y -= 1
+		playerDirection = "+X"
 	if Input.is_action_just_pressed("camera_pivot_right"):
 		inputPivotVelocity.y += 1
+		playerDirection = "-X"
 	
 	#Velocity maxed at set speed
 	inputPivotVelocity = inputPivotVelocity.normalized() * PIVOTSPEED
@@ -39,19 +42,18 @@ func _physics_process(delta):
 	
 	
 	##########2D Movement Control##########
-	if rotation_degrees.y < 90 and rotation_degrees.y > -90:
-		if Input.is_action_pressed("forward"):
-			inputVelocity.z -= 1
-			inputRotateVelocity.x -= 1
-		if Input.is_action_pressed("backward"):
-			inputVelocity.z += 1
-			inputRotateVelocity.x += 1
-		if Input.is_action_pressed("left"):
-			inputVelocity.x -= 1
-			inputRotateVelocity.z += 1
-		if Input.is_action_pressed("right"):
-			inputVelocity.x += 1
-			inputRotateVelocity.z -= 1
+	if Input.is_action_pressed("forward"):
+		inputVelocity.z -= 1
+		inputRotateVelocity.x -= 1
+	if Input.is_action_pressed("backward"):
+		inputVelocity.z += 1
+		inputRotateVelocity.x += 1
+	if Input.is_action_pressed("left"):
+		inputVelocity.x -= 1
+		inputRotateVelocity.z += 1
+	if Input.is_action_pressed("right"):
+		inputVelocity.x += 1
+		inputRotateVelocity.z -= 1
 	
 	if rotation_degrees.y < 180 and rotation_degrees.y > 0:
 		if Input.is_action_pressed("forward"):
@@ -109,8 +111,8 @@ func _physics_process(delta):
 		rotateVelocity = rotateVelocity.linear_interpolate(Vector3.ZERO, FRICTION)
 	
 	#Jumping movement control
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMPSPEED
+	if Input.is_action_pressed("jump") and is_on_floor():
+		velocity.y = JUMPPOWER
 	
 	#Gravity
 	velocity.y -= GRAVITY * delta
