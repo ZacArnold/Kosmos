@@ -24,6 +24,8 @@ func _physics_process(delta):
 	#No Jump on first level
 	if get_tree().current_scene.name == "level_1":
 		jumpAllowed = false
+	elif get_tree().current_scene.name == "level_2":
+		jumpAllowed = true
 	
 	##########Rotation Control##########
 	if Input.is_action_just_pressed("camera_pivot_left"):
