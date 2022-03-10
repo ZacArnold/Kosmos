@@ -9,9 +9,10 @@ const JUMPPOWER = 30
 const GRAVITY = 98/1.5
 const PIVOTSPEED = 90
 var velocity = Vector3.ZERO
-var playerDirection = 0
 var rotateVelocity = Vector3.ZERO
 var pivotVelocity = Vector3.ZERO
+var playerDirection = 0
+var jumpAllowed = true
 ##################################
 
 
@@ -20,6 +21,9 @@ func _physics_process(delta):
 	var inputRotateVelocity = Vector3.ZERO
 	var inputPivotVelocity = Vector3.ZERO
 	
+	#No Jump on first level
+	if get_tree().current_scene.name == "level_1":
+		jumpAllowed = false
 	
 	##########Rotation Control##########
 	if Input.is_action_just_pressed("camera_pivot_left"):
@@ -137,7 +141,7 @@ func _physics_process(delta):
 	
 	
 	##########Jumping & Gravity Control##########
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_pressed("jump") and is_on_floor() and jumpAllowed == true:
 		velocity.y = JUMPPOWER
 	velocity.y -= GRAVITY * delta
 	#############################################
