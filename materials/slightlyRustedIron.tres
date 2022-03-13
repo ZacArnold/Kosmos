@@ -1,10 +1,10 @@
 [gd_resource type="SpatialMaterial" load_steps=6 format=2]
 
-[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_Metalness.jpg" type="Texture" id=1]
-[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_NormalGL.jpg" type="Texture" id=2]
-[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_Displacement.jpg" type="Texture" id=3]
-[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_Roughness.jpg" type="Texture" id=4]
-[ext_resource path="res://pbrs/Metal024_1K-JPG/Metal024_1K_Color.jpg" type="Texture" id=5]
+[ext_resource path="res://textures/slightlyRustedIron/Metal024_1K_Metalness.jpg" type="Texture" id=1]
+[ext_resource path="res://textures/slightlyRustedIron/Metal024_1K_NormalDX.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/slightlyRustedIron/Metal024_1K_Displacement.jpg" type="Texture" id=3]
+[ext_resource path="res://textures/slightlyRustedIron/Metal024_1K_Roughness.jpg" type="Texture" id=4]
+[ext_resource path="res://textures/slightlyRustedIron/Metal024_1K_Color.jpg" type="Texture" id=5]
 
 [resource]
 albedo_texture = ExtResource( 5 )
@@ -16,9 +16,7 @@ normal_scale = 4.0
 normal_texture = ExtResource( 2 )
 depth_enabled = true
 depth_scale = -0.05
-depth_deep_parallax = true
-depth_min_layers = 8
-depth_max_layers = 32
+depth_deep_parallax = false
 depth_flip_tangent = false
 depth_flip_binormal = false
 depth_texture = ExtResource( 3 )
