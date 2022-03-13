@@ -2,15 +2,15 @@ extends KinematicBody
 
 
 ##########Variable Setup##########
-const MAXSPEED = 12
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 30
-const GRAVITY = 98/1.5
+const JUMPPOWER = 50
+const GRAVITY = 9.8
 const PIVOTSPEED = 90
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
 var pivotVelocity = Vector3.ZERO
+var MAXSPEED = 12
 var playerDirection = 0
 var jumpAllowed = true
 ##################################
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	#No Jump on first level
 	if get_tree().current_scene.name == "level_1":
 		jumpAllowed = false
-	elif get_tree().current_scene.name == "level_2":
+	else:
 		jumpAllowed = true
 	
 	##########Rotation Control##########
@@ -70,16 +70,28 @@ func _physics_process(delta):
 	
 	
 	##########Player Rotation Control##########
-	if Input.is_action_pressed("forward"):
+	if Input.is_action_pressed("forward") and is_on_floor():
 		inputRotateVelocity.x -= 1
-	if Input.is_action_pressed("backward"):
+	if Input.is_action_pressed("backward") and is_on_floor():
 		inputRotateVelocity.x += 1
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") and is_on_floor():
 		inputRotateVelocity.z += 1
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") and is_on_floor():
 		inputRotateVelocity.z -= 1
 	###########################################
 	
+	
+	##########Jumping & Gravity Control##########
+	if Input.is_action_pressed("jump") and is_on_floor() and jumpAllowed == true:
+		velocity.y += JUMPPOWER
+	velocity.y -= GRAVITY * delta
+	#############################################
+	
+	#Slower Mid-air Movement
+	if not is_on_floor():
+		MAXSPEED = 3
+	else: 
+		MAXSPEED = 12
 	
 	##########2D Movement Control##########
 	if playerDirection == 0:
@@ -142,8 +154,5 @@ func _physics_process(delta):
 	#######################################
 	
 	
-	##########Jumping & Gravity Control##########
-	if Input.is_action_pressed("jump") and is_on_floor() and jumpAllowed == true:
-		velocity.y = JUMPPOWER
-	velocity.y -= GRAVITY * delta
-	#############################################
+	
+	print(velocity)
