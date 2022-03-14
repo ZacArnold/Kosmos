@@ -4,7 +4,7 @@ extends KinematicBody
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 10
+const JUMPPOWER = 5
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 var velocity = Vector3.ZERO
@@ -25,12 +25,20 @@ func _physics_process(delta):
 	#No Jump on first level
 	if get_tree().current_scene.name == "level_1":
 		jumpAllowed = false
+	#No Gravity on start screen
+	elif get_tree().current_scene.name == "startScreen":
+		jumpAllowed = false
+		velocity = Vector3.ZERO
+		rotateVelocity = Vector3.ZERO
+		pivotVelocity = Vector3.ZERO
+		jumpVelocity = Vector3.ZERO
+		MAXSPEED = 0
 	else:
 		jumpAllowed = true
 	
 	#Slower Mid-air Movement
 	if not is_on_floor():
-		MAXSPEED = 3
+		MAXSPEED = 6
 	else: 
 		MAXSPEED = 12
 	
@@ -182,10 +190,9 @@ func _physics_process(delta):
 	
 	
 	##########Jumping & Gravity Control##########
-	if Input.is_action_pressed("jump") and is_on_floor() and jumpAllowed == true:
-		jumpVelocity.y = JUMPPOWER
-	if not Input.is_action_pressed("jump") and is_on_floor():
-		jumpVelocity.y = 0
+	if jumpAllowed == true:
+		if Input.is_action_pressed("jump") and is_on_floor():
+			jumpVelocity.y = JUMPPOWER
 	if not is_on_floor():
 		jumpVelocity.y -= GRAVITY * delta
 	jumpVelocity = move_and_slide(jumpVelocity, Vector3.UP)
@@ -196,3 +203,8 @@ func _physics_process(delta):
 	
 	#print(velocity)
 	print(jumpVelocity)
+
+#Start screen button
+func _on_Button_pressed():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://levels/level_1.tscn")

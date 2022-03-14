@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://environments/planetsideEnvironment.tres" type="Environment" id=1]
+[ext_resource path="res://elements/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/fastHand.tres" type="DynamicFont" id=3]
+
+[node name="startScreen" type="Spatial"]
+
+[node name="worldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+
+[node name="startScreenUI" type="Control" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="startScreenUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 485.0
+margin_right = -486.0
+margin_bottom = -985.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.172549, 0.254902, 0.356863, 1 )
+custom_constants/shadow_offset_x = 10
+custom_fonts/font = ExtResource( 3 )
+text = "Untitled Maze Game"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="titleShadow" type="Label" parent="startScreenUI/title"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 20
+custom_fonts/font = ExtResource( 3 )
+text = "Untitled Maze Game"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="startScreenUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 818.0
+margin_top = 750.0
+margin_right = -818.0
+margin_bottom = -229.0
+custom_fonts/font = ExtResource( 3 )
+text = "START"
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+[connection signal="pressed" from="startScreenUI/Button" to="player" method="_on_Button_pressed"]
