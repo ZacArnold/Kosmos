@@ -18,7 +18,9 @@ material/0 = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
 
-[node name="Camera" type="Camera" parent="."]
+[node name="pivot" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="pivot"]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10 )
 environment = ExtResource( 3 )
 doppler_tracking = 2

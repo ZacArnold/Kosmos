@@ -4,12 +4,13 @@ extends KinematicBody
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 50
+const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
 var pivotVelocity = Vector3.ZERO
+var jumpVelocity = Vector3.ZERO
 var MAXSPEED = 12
 var playerDirection = 0
 var jumpAllowed = true
@@ -27,7 +28,14 @@ func _physics_process(delta):
 	else:
 		jumpAllowed = true
 	
-	##########Rotation Control##########
+	#Slower Mid-air Movement
+	if not is_on_floor():
+		MAXSPEED = 3
+	else: 
+		MAXSPEED = 12
+	
+	
+	##########Camera Control##########
 	if Input.is_action_just_pressed("camera_pivot_left"):
 		inputPivotVelocity.y -= 1
 		playerDirection -= 1
@@ -65,33 +73,52 @@ func _physics_process(delta):
 		pivotVelocity = pivotVelocity.linear_interpolate(Vector3.ZERO, FRICTION)
 	
 	#Rotates Camera
-	rotate_y(deg2rad(pivotVelocity.y))
-	####################################
+	$pivot.rotate_y(deg2rad(pivotVelocity.y))
+	##################################
 	
 	
 	##########Player Rotation Control##########
-	if Input.is_action_pressed("forward") and is_on_floor():
-		inputRotateVelocity.x -= 1
-	if Input.is_action_pressed("backward") and is_on_floor():
-		inputRotateVelocity.x += 1
-	if Input.is_action_pressed("left") and is_on_floor():
-		inputRotateVelocity.z += 1
-	if Input.is_action_pressed("right") and is_on_floor():
-		inputRotateVelocity.z -= 1
+	if playerDirection == 0:
+		if Input.is_action_pressed("forward"):
+			inputRotateVelocity.x -= 1
+		if Input.is_action_pressed("backward"):
+			inputRotateVelocity.x += 1
+		if Input.is_action_pressed("left"):
+			inputRotateVelocity.z += 1
+		if Input.is_action_pressed("right"):
+			inputRotateVelocity.z -= 1
+	
+	if playerDirection == 1 or playerDirection == -3:
+		if Input.is_action_pressed("forward"):
+			inputRotateVelocity.z += 1
+		if Input.is_action_pressed("backward"):
+			inputRotateVelocity.z -= 1
+		if Input.is_action_pressed("left"):
+			inputRotateVelocity.x += 1
+		if Input.is_action_pressed("right"):
+			inputRotateVelocity.x -= 1
+	
+	if playerDirection == -1 or playerDirection == 3:
+		if Input.is_action_pressed("forward"):
+			inputRotateVelocity.z -= 1
+		if Input.is_action_pressed("backward"):
+			inputRotateVelocity.z += 1
+		if Input.is_action_pressed("left"):
+			inputRotateVelocity.x -= 1
+		if Input.is_action_pressed("right"):
+			inputRotateVelocity.x += 1
+	
+	if playerDirection == 2 or playerDirection == -2:
+		if Input.is_action_pressed("forward"):
+			inputRotateVelocity.x += 1
+		if Input.is_action_pressed("backward"):
+			inputRotateVelocity.x -= 1
+		if Input.is_action_pressed("left"):
+			inputRotateVelocity.z -= 1
+		if Input.is_action_pressed("right"):
+			inputRotateVelocity.z += 1
 	###########################################
 	
-	
-	##########Jumping & Gravity Control##########
-	if Input.is_action_pressed("jump") and is_on_floor() and jumpAllowed == true:
-		velocity.y += JUMPPOWER
-	velocity.y -= GRAVITY * delta
-	#############################################
-	
-	#Slower Mid-air Movement
-	if not is_on_floor():
-		MAXSPEED = 3
-	else: 
-		MAXSPEED = 12
 	
 	##########2D Movement Control##########
 	if playerDirection == 0:
@@ -154,5 +181,18 @@ func _physics_process(delta):
 	#######################################
 	
 	
+	##########Jumping & Gravity Control##########
+	if Input.is_action_pressed("jump") and is_on_floor() and jumpAllowed == true:
+		jumpVelocity.y = JUMPPOWER
+	if not Input.is_action_pressed("jump") and is_on_floor():
+		jumpVelocity.y = 0
+	if not is_on_floor():
+		jumpVelocity.y -= GRAVITY * delta
+	jumpVelocity = move_and_slide(jumpVelocity, Vector3.UP)
+	jumpVelocity.x = 0
+	jumpVelocity.z = 0
+	#############################################
 	
-	print(velocity)
+	
+	#print(velocity)
+	print(jumpVelocity)
