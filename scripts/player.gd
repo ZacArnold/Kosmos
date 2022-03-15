@@ -4,7 +4,7 @@ extends KinematicBody
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 5
+const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 var velocity = Vector3.ZERO
@@ -184,6 +184,7 @@ func _physics_process(delta):
 	
 	#Moves and rotates the player with accelerating and deccelerating velocity
 	velocity = move_and_slide(velocity,Vector3.UP)
+	velocity.y = 0
 	$MeshInstance.rotate_z(deg2rad(rotateVelocity.z))
 	$MeshInstance.rotate_x(deg2rad(rotateVelocity.x))
 	#######################################

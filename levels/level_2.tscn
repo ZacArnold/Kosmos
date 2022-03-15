@@ -13,10 +13,10 @@
 
 [node name="environment" type="Node" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
+[node name="worldEnvironment" type="WorldEnvironment" parent="environment"]
 environment = ExtResource( 4 )
 
-[node name="GridMap" type="GridMap" parent="environment"]
+[node name="gridMap" type="GridMap" parent="environment"]
 mesh_library = ExtResource( 2 )
 use_in_baked_light = true
 data = {
