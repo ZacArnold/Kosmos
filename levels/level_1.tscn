@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://environments/planetsideEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://elements/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://elements/levelStart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://elements/levelEnd.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
 [ext_resource path="res://elements/goal.tscn" type="PackedScene" id=9]
 
@@ -35,7 +37,15 @@ shape = SubResource( 9 )
 [node name="player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 125, 25 )
 
-[node name="goal" parent="." instance=ExtResource( 9 )]
+[node name="controlControllers" type="Node" parent="."]
+
+[node name="goal" parent="controlControllers" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -15, -23 )
+
+[node name="levelStart" parent="controlControllers" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 2, 25 )
+
+[node name="levelEnd" parent="controlControllers" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -23 )
 
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]

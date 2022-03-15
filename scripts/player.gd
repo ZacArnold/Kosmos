@@ -1,5 +1,6 @@
 extends KinematicBody
 
+onready var global = get_node("/root/Global")
 
 ##########Variable Setup##########
 const FRICTION = 0.075
@@ -13,7 +14,6 @@ var pivotVelocity = Vector3.ZERO
 var jumpVelocity = Vector3.ZERO
 var MAXSPEED = 12
 var playerDirection = 0
-var jumpAllowed = true
 ##################################
 
 
@@ -24,17 +24,12 @@ func _physics_process(delta):
 	
 	#No Jump on first level
 	if get_tree().current_scene.name == "level_1":
-		jumpAllowed = false
+		global.jumpAllowed = false
 	#No Gravity on start screen
 	elif get_tree().current_scene.name == "startScreen":
-		jumpAllowed = false
-		velocity = Vector3.ZERO
-		rotateVelocity = Vector3.ZERO
-		pivotVelocity = Vector3.ZERO
-		jumpVelocity = Vector3.ZERO
-		MAXSPEED = 0
+		global.jumpAllowed = false
 	else:
-		jumpAllowed = true
+		global.jumpAllowed = true
 	
 	#Slower Mid-air Movement
 	if not is_on_floor():
@@ -44,24 +39,24 @@ func _physics_process(delta):
 	
 	
 	##########Camera Control##########
-	if Input.is_action_just_pressed("camera_pivot_left"):
+	if Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
 		inputPivotVelocity.y -= 1
 		playerDirection -= 1
-	elif Input.is_action_just_pressed("camera_pivot_left"):
+	elif Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
 		playerDirection -= 1
-	elif Input.is_action_just_pressed("camera_pivot_left"):
+	elif Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
 		playerDirection -= 1
-	elif Input.is_action_just_pressed("camera_pivot_left"):
+	elif Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
 		playerDirection = 0
 	
-	if Input.is_action_just_pressed("camera_pivot_right"):
+	if Input.is_action_just_pressed("camera_pivot_right") and global.controlAllowed == true:
 		inputPivotVelocity.y += 1
 		playerDirection += 1
-	elif Input.is_action_just_pressed("camera_pivot_right"):
+	elif Input.is_action_just_pressed("camera_pivot_right") and global.controlAllowed == true:
 		playerDirection += 1
-	elif Input.is_action_just_pressed("camera_pivot_right"):
+	elif Input.is_action_just_pressed("camera_pivot_right") and global.controlAllowed == true:
 		playerDirection += 1
-	elif Input.is_action_just_pressed("camera_pivot_right"):
+	elif Input.is_action_just_pressed("camera_pivot_right") and global.controlAllowed == true:
 		playerDirection = 0
 	
 	#Keeps direction set within range
@@ -86,87 +81,87 @@ func _physics_process(delta):
 	
 	
 	##########Player Rotation Control##########
-	if playerDirection == 0:
-		if Input.is_action_pressed("forward"):
+	if playerDirection == 0 and global.controlAllowed == true:
+		if Input.is_action_pressed("forward") and global.controlAllowed == true:
 			inputRotateVelocity.x -= 1
-		if Input.is_action_pressed("backward"):
+		if Input.is_action_pressed("backward") and global.controlAllowed == true:
 			inputRotateVelocity.x += 1
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") and global.controlAllowed == true:
 			inputRotateVelocity.z += 1
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputRotateVelocity.z -= 1
 	
-	if playerDirection == 1 or playerDirection == -3:
-		if Input.is_action_pressed("forward"):
+	if playerDirection == 1 or playerDirection == -3 and global.controlAllowed == true:
+		if Input.is_action_pressed("forward") and global.controlAllowed == true:
 			inputRotateVelocity.z += 1
-		if Input.is_action_pressed("backward"):
+		if Input.is_action_pressed("backward") and global.controlAllowed == true:
 			inputRotateVelocity.z -= 1
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") and global.controlAllowed == true:
 			inputRotateVelocity.x += 1
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputRotateVelocity.x -= 1
 	
-	if playerDirection == -1 or playerDirection == 3:
-		if Input.is_action_pressed("forward"):
+	if playerDirection == -1 or playerDirection == 3 and global.controlAllowed == true:
+		if Input.is_action_pressed("forward") and global.controlAllowed == true:
 			inputRotateVelocity.z -= 1
-		if Input.is_action_pressed("backward"):
+		if Input.is_action_pressed("backward") and global.controlAllowed == true:
 			inputRotateVelocity.z += 1
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") and global.controlAllowed == true:
 			inputRotateVelocity.x -= 1
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputRotateVelocity.x += 1
 	
-	if playerDirection == 2 or playerDirection == -2:
-		if Input.is_action_pressed("forward"):
+	if playerDirection == 2 or playerDirection == -2 and global.controlAllowed == true:
+		if Input.is_action_pressed("forward") and global.controlAllowed == true:
 			inputRotateVelocity.x += 1
-		if Input.is_action_pressed("backward"):
+		if Input.is_action_pressed("backward") and global.controlAllowed == true:
 			inputRotateVelocity.x -= 1
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") and global.controlAllowed == true:
 			inputRotateVelocity.z -= 1
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputRotateVelocity.z += 1
 	###########################################
 	
 	
 	##########2D Movement Control##########
-	if playerDirection == 0:
-		if Input.is_action_pressed("forward"):
+	if playerDirection == 0 and global.controlAllowed == true:
+		if Input.is_action_pressed("forward") and global.controlAllowed == true:
 			inputVelocity.z -= 1
-		if Input.is_action_pressed("backward"):
+		if Input.is_action_pressed("backward") and global.controlAllowed == true:
 			inputVelocity.z += 1
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") and global.controlAllowed == true:
 			inputVelocity.x -= 1
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputVelocity.x += 1
 	
-	if playerDirection == 1 or playerDirection == -3:
-		if Input.is_action_pressed("forward"):
+	if playerDirection == 1 or playerDirection == -3 and global.controlAllowed == true:
+		if Input.is_action_pressed("forward") and global.controlAllowed == true:
 			inputVelocity.x -= 1
-		if Input.is_action_pressed("backward"):
+		if Input.is_action_pressed("backward") and global.controlAllowed == true:
 			inputVelocity.x += 1
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") and global.controlAllowed == true:
 			inputVelocity.z += 1
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputVelocity.z -= 1
 	
-	if playerDirection == -1 or playerDirection == 3:
-		if Input.is_action_pressed("forward"):
+	if playerDirection == -1 or playerDirection == 3 and global.controlAllowed == true:
+		if Input.is_action_pressed("forward") and global.controlAllowed == true:
 			inputVelocity.x += 1
-		if Input.is_action_pressed("backward"):
+		if Input.is_action_pressed("backward") and global.controlAllowed == true:
 			inputVelocity.x -= 1
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") and global.controlAllowed == true:
 			inputVelocity.z -= 1
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputVelocity.z += 1
 	
-	if playerDirection == 2 or playerDirection == -2:
-		if Input.is_action_pressed("forward"):
+	if playerDirection == 2 or playerDirection == -2 and global.controlAllowed == true:
+		if Input.is_action_pressed("forward") and global.controlAllowed == true:
 			inputVelocity.z += 1
-		if Input.is_action_pressed("backward"):
+		if Input.is_action_pressed("backward") and global.controlAllowed == true:
 			inputVelocity.z -= 1
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed("left") and global.controlAllowed == true:
 			inputVelocity.x += 1
-		if Input.is_action_pressed("right"):
+		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputVelocity.x -= 1
 	
 	#Velocity maxed at set speed
@@ -184,14 +179,13 @@ func _physics_process(delta):
 	
 	#Moves and rotates the player with accelerating and deccelerating velocity
 	velocity = move_and_slide(velocity,Vector3.UP)
-	velocity.y = 0
-	$MeshInstance.rotate_z(deg2rad(rotateVelocity.z))
-	$MeshInstance.rotate_x(deg2rad(rotateVelocity.x))
+	$meshInstance.rotate_z(deg2rad(rotateVelocity.z))
+	$meshInstance.rotate_x(deg2rad(rotateVelocity.x))
 	#######################################
 	
 	
 	##########Jumping & Gravity Control##########
-	if jumpAllowed == true:
+	if global.jumpAllowed == true and global.controlAllowed == true:
 		if Input.is_action_pressed("jump") and is_on_floor():
 			jumpVelocity.y = JUMPPOWER
 	if not is_on_floor():
@@ -202,6 +196,9 @@ func _physics_process(delta):
 	#############################################
 	
 	
-	#print(velocity)
-	print(jumpVelocity)
+	
+	
+	#DEBUG
+	print("Velocity: ", velocity)
+	print("Jump Velocity: ", jumpVelocity)
 
