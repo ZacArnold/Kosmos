@@ -26,7 +26,7 @@ __meta__ = {
 }
 
 [node name="fallZone" type="Area" parent="environment"]
-transform = Transform( 75, 0, 0, 0, 1, 0, 0, 0, 75, 0, -15, 0 )
+transform = Transform( 75, 0, 0, 0, 1, 0, 0, 0, 75, 0, -20, 0 )
 script = ExtResource( 8 )
 
 [node name="collisionShape" type="CollisionShape" parent="environment/fallZone"]

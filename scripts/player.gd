@@ -204,7 +204,3 @@ func _physics_process(delta):
 	#print(velocity)
 	print(jumpVelocity)
 
-#Start screen button
-func _on_Button_pressed():
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://levels/level_1.tscn")
