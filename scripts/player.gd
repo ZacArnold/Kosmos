@@ -2,17 +2,20 @@ extends KinematicBody
 
 onready var global = get_node("/root/Global")
 
+
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
 const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
+
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
 var pivotVelocity = Vector3.ZERO
 var jumpVelocity = Vector3.ZERO
-var MAXSPEED = 12
+
+var maxSpeed = 12
 var playerDirection = 0
 ##################################
 
@@ -33,9 +36,9 @@ func _physics_process(delta):
 	
 	#Slower Mid-air Movement
 	if not is_on_floor():
-		MAXSPEED = 6
+		maxSpeed = 6
 	else: 
-		MAXSPEED = 12
+		maxSpeed = 12
 	
 	
 	##########Camera Control##########
@@ -165,8 +168,8 @@ func _physics_process(delta):
 			inputVelocity.x -= 1
 	
 	#Velocity maxed at set speed
-	inputVelocity = inputVelocity.normalized() * MAXSPEED
-	inputRotateVelocity = inputRotateVelocity.normalized() * MAXSPEED
+	inputVelocity = inputVelocity.normalized() * maxSpeed
+	inputRotateVelocity = inputRotateVelocity.normalized() * maxSpeed
 	
 	# If there's input, accelerate to the input velocity
 	if inputVelocity.length() > 0:
@@ -197,8 +200,6 @@ func _physics_process(delta):
 	
 	
 	
-	
 	#DEBUG
-	print("Velocity: ", velocity)
+	print("Velocity:      ", velocity)
 	print("Jump Velocity: ", jumpVelocity)
-
