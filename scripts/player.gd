@@ -6,7 +6,7 @@ onready var global = get_node("/root/Global")
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 10
+const JUMPPOWER = 7.5
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 
@@ -166,7 +166,17 @@ func _physics_process(delta):
 			inputVelocity.x += 1
 		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputVelocity.x -= 1
+	#######################################
 	
+	
+	##########Jumping Control##########
+	if global.jumpAllowed == true and global.controlAllowed == true:
+		if Input.is_action_pressed("jump") and is_on_floor():
+			jumpVelocity.y = JUMPPOWER
+	###################################
+	
+	
+	##########Smooth Movement##########
 	#Velocity maxed at set speed
 	inputVelocity = inputVelocity.normalized() * maxSpeed
 	inputRotateVelocity = inputRotateVelocity.normalized() * maxSpeed
@@ -181,22 +191,20 @@ func _physics_process(delta):
 		rotateVelocity = rotateVelocity.linear_interpolate(Vector3.ZERO, FRICTION)
 	
 	#Moves and rotates the player with accelerating and deccelerating velocity
-	velocity = move_and_slide(velocity,Vector3.UP)
+	velocity = move_and_slide(velocity, Vector3.UP)
+	velocity.y = 0
 	$meshInstance.rotate_z(deg2rad(rotateVelocity.z))
 	$meshInstance.rotate_x(deg2rad(rotateVelocity.x))
-	#######################################
+	###################################
 	
 	
-	##########Jumping & Gravity Control##########
-	if global.jumpAllowed == true and global.controlAllowed == true:
-		if Input.is_action_pressed("jump") and is_on_floor():
-			jumpVelocity.y = JUMPPOWER
+	##########Gravity##########
 	if not is_on_floor():
 		jumpVelocity.y -= GRAVITY * delta
 	jumpVelocity = move_and_slide(jumpVelocity, Vector3.UP)
 	jumpVelocity.x = 0
 	jumpVelocity.z = 0
-	#############################################
+	###########################
 	
 	
 	
