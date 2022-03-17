@@ -34,8 +34,10 @@ script = ExtResource( 8 )
 [node name="collisionShape" type="CollisionShape" parent="environment/fallZone"]
 shape = SubResource( 9 )
 
-[node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 125, 25 )
+[node name="DirectionalLight" type="DirectionalLight" parent="environment"]
+transform = Transform( 1, 0, 0, 0, -0.996195, 0.0871556, 0, -0.0871556, -0.996195, 0, 25, -100 )
+light_color = Color( 0.584314, 0.823529, 1, 1 )
+light_energy = 0.1
 
 [node name="controlControllers" type="Node" parent="."]
 
@@ -47,5 +49,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 2, 25 )
 
 [node name="levelEnd" parent="controlControllers" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -23 )
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 125, 25 )
 
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]

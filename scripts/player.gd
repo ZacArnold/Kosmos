@@ -6,7 +6,7 @@ onready var global = get_node("/root/Global")
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 7.5
+const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 
@@ -25,18 +25,9 @@ func _physics_process(delta):
 	var inputRotateVelocity = Vector3.ZERO
 	var inputPivotVelocity = Vector3.ZERO
 	
-	#No Jump on first level
-	if get_tree().current_scene.name == "level_1":
-		global.jumpAllowed = false
-	#No Gravity on start screen
-	elif get_tree().current_scene.name == "startScreen":
-		global.jumpAllowed = false
-	else:
-		global.jumpAllowed = true
-	
 	#Slower Mid-air Movement
 	if not is_on_floor():
-		maxSpeed = 6
+		maxSpeed = 10
 	else: 
 		maxSpeed = 12
 	
@@ -170,7 +161,7 @@ func _physics_process(delta):
 	
 	
 	##########Jumping Control##########
-	if global.jumpAllowed == true and global.controlAllowed == true:
+	if global.controlAllowed == true:
 		if Input.is_action_pressed("jump") and is_on_floor():
 			jumpVelocity.y = JUMPPOWER
 	###################################
@@ -199,8 +190,10 @@ func _physics_process(delta):
 	
 	
 	##########Gravity##########
-	if not is_on_floor():
-		jumpVelocity.y -= GRAVITY * delta
+	if not is_on_floor() and get_tree().current_scene.name != "startScreen":
+		jumpVelocity.y -= GRAVITY * (2 * delta)
+	else:
+		jumpVelocity.y = 0
 	jumpVelocity = move_and_slide(jumpVelocity, Vector3.UP)
 	jumpVelocity.x = 0
 	jumpVelocity.z = 0
@@ -209,5 +202,7 @@ func _physics_process(delta):
 	
 	
 	#DEBUG
-	print("Velocity:      ", velocity)
-	print("Jump Velocity: ", jumpVelocity)
+	if velocity != Vector3.ZERO:
+		print("Velocity:      ", velocity)
+	if jumpVelocity != Vector3.ZERO:
+		print("Jump Velocity: ", jumpVelocity)
