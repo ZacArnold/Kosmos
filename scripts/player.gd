@@ -117,6 +117,13 @@ func _physics_process(delta):
 	###########################################
 	
 	
+	##########Jumping Control##########
+	if global.controlAllowed == true:
+		if Input.is_action_pressed("jump") and is_on_floor():
+			jumpVelocity.y = JUMPPOWER
+	###################################
+	
+	
 	##########2D Movement Control##########
 	if playerDirection == 0 and global.controlAllowed == true:
 		if Input.is_action_pressed("forward") and global.controlAllowed == true:
@@ -158,13 +165,6 @@ func _physics_process(delta):
 		if Input.is_action_pressed("right") and global.controlAllowed == true:
 			inputVelocity.x -= 1
 	#######################################
-	
-	
-	##########Jumping Control##########
-	if global.controlAllowed == true:
-		if Input.is_action_pressed("jump") and is_on_floor():
-			jumpVelocity.y = JUMPPOWER
-	###################################
 	
 	
 	##########Smooth Movement##########
