@@ -6,7 +6,7 @@ onready var global = get_node("/root/Global")
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 10
+const JUMPPOWER = 15
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 
@@ -36,22 +36,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
 		inputPivotVelocity.y -= 1
 		playerDirection -= 1
-	elif Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
-		playerDirection -= 1
-	elif Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
-		playerDirection -= 1
-	elif Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
-		playerDirection = 0
 	
 	if Input.is_action_just_pressed("camera_pivot_right") and global.controlAllowed == true:
 		inputPivotVelocity.y += 1
 		playerDirection += 1
-	elif Input.is_action_just_pressed("camera_pivot_right") and global.controlAllowed == true:
-		playerDirection += 1
-	elif Input.is_action_just_pressed("camera_pivot_right") and global.controlAllowed == true:
-		playerDirection += 1
-	elif Input.is_action_just_pressed("camera_pivot_right") and global.controlAllowed == true:
-		playerDirection = 0
 	
 	#Keeps direction set within range
 	if playerDirection == 4 or playerDirection == -4:
@@ -117,13 +105,6 @@ func _physics_process(delta):
 	###########################################
 	
 	
-	##########Jumping Control##########
-	if global.controlAllowed == true:
-		if Input.is_action_pressed("jump") and is_on_floor():
-			jumpVelocity.y = JUMPPOWER
-	###################################
-	
-	
 	##########2D Movement Control##########
 	if playerDirection == 0 and global.controlAllowed == true:
 		if Input.is_action_pressed("forward") and global.controlAllowed == true:
@@ -167,6 +148,21 @@ func _physics_process(delta):
 	#######################################
 	
 	
+	##########Gravity##########
+	if not is_on_floor() and get_tree().current_scene.name != "startScreen":
+		velocity.y -= GRAVITY * (2 * delta)
+	else:
+		velocity.y = 0
+	###########################
+	
+	
+	##########Jumping Control##########
+	if global.controlAllowed == true:
+		if Input.is_action_pressed("jump") and is_on_floor():
+			velocity.y = JUMPPOWER
+	###################################
+	
+	
 	##########Smooth Movement##########
 	#Velocity maxed at set speed
 	inputVelocity = inputVelocity.normalized() * maxSpeed
@@ -174,35 +170,23 @@ func _physics_process(delta):
 	
 	# If there's input, accelerate to the input velocity
 	if inputVelocity.length() > 0:
-		velocity = velocity.linear_interpolate(inputVelocity, ACCELERATION)
+		velocity.x = lerp(velocity.x, inputVelocity.x, ACCELERATION)
+		velocity.z = lerp(velocity.z, inputVelocity.z, ACCELERATION)
 		rotateVelocity = rotateVelocity.linear_interpolate(inputRotateVelocity, ACCELERATION)
 	else:
 	# If there's no input, slow down to (0, 0)
-		velocity = velocity.linear_interpolate(Vector3.ZERO, FRICTION)
+		velocity.x = lerp(velocity.x, 0, FRICTION)
+		velocity.z = lerp(velocity.z, 0, FRICTION)
 		rotateVelocity = rotateVelocity.linear_interpolate(Vector3.ZERO, FRICTION)
 	
 	#Moves and rotates the player with accelerating and deccelerating velocity
 	velocity = move_and_slide(velocity, Vector3.UP)
-	velocity.y = 0
 	$meshInstance.rotate_z(deg2rad(rotateVelocity.z))
 	$meshInstance.rotate_x(deg2rad(rotateVelocity.x))
 	###################################
-	
-	
-	##########Gravity##########
-	if not is_on_floor() and get_tree().current_scene.name != "startScreen":
-		jumpVelocity.y -= GRAVITY * (2 * delta)
-	else:
-		jumpVelocity.y = 0
-	jumpVelocity = move_and_slide(jumpVelocity, Vector3.UP)
-	jumpVelocity.x = 0
-	jumpVelocity.z = 0
-	###########################
 	
 	
 	
 	#DEBUG
 	if velocity != Vector3.ZERO:
 		print("Velocity:      ", velocity)
-	if jumpVelocity != Vector3.ZERO:
-		print("Jump Velocity: ", jumpVelocity)

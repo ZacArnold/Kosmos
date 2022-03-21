@@ -1,0 +1,18 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "liftMove (copy)"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 9 ),
+"transitions": PoolRealArray( 1e-05, 0.5, 1e-05, 0.5 ),
+"update": 0,
+"values": [ Vector3( 23, 3, -85 ), Vector3( 23, 3, -85 ), Vector3( 23, 23, -85 ), Vector3( 23, 23, -85 ) ]
+}
