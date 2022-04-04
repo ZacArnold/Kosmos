@@ -105,6 +105,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 2, -85 )
 
 [node name="goal" parent="controllers" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -13, -85 )
+nextLevel = "res://levels/level_3.tscn"
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 150, -23 )
