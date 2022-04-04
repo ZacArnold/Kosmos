@@ -39,3 +39,4 @@ autoplay = "liftMove (copy)"
 anims/RESET = SubResource( 15 )
 anims/liftMove = ExtResource( 3 )
 "anims/liftMove (copy)" = ExtResource( 2 )
+anims/liftMove_2 = ExtResource( 2 )
