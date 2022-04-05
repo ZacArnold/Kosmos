@@ -7,10 +7,10 @@
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=5]
 [ext_resource path="res://elements/levelStart.tscn" type="PackedScene" id=6]
 [ext_resource path="res://elements/lift.tscn" type="PackedScene" id=7]
-[ext_resource path="res://elements/levelEnd.tscn" type="PackedScene" id=8]
+[ext_resource path="res://elements/controlOff.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/mazeWallGridMap.gd" type="Script" id=9]
 [ext_resource path="res://animations/wallRise.tres" type="Animation" id=10]
-[ext_resource path="res://animations/wallRise2.tres" type="Animation" id=11]
+[ext_resource path="res://animations/wallRise_2.tres" type="Animation" id=11]
 [ext_resource path="res://elements/lift_2.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=2]
@@ -60,13 +60,13 @@ data = {
 script = ExtResource( 9 )
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 32, 0 )
+"_editor_floor_": Vector3( 0, 1, 0 )
 }
 
 [node name="animationPlayer" type="AnimationPlayer" parent="environment/gridMaps/mazeWallGridMap"]
 anims/RESET = SubResource( 2 )
 anims/wallRise = ExtResource( 10 )
-anims/wallRise2 = ExtResource( 11 )
+anims/wallRise_2 = ExtResource( 11 )
 
 [node name="platformGridMap" type="GridMap" parent="environment/gridMaps"]
 mesh_library = ExtResource( 2 )
@@ -100,7 +100,7 @@ light_energy = 0.1
 [node name="levelStart" parent="controllers" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 2, -23 )
 
-[node name="levelEnd" parent="controllers" instance=ExtResource( 8 )]
+[node name="controlOff" parent="controllers" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 2, -85 )
 
 [node name="goal" parent="controllers" instance=ExtResource( 1 )]

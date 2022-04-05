@@ -4,7 +4,7 @@
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://elements/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://elements/levelStart.tscn" type="PackedScene" id=4]
-[ext_resource path="res://elements/levelEnd.tscn" type="PackedScene" id=5]
+[ext_resource path="res://elements/controlOff.tscn" type="PackedScene" id=5]
 [ext_resource path="res://animations/wallRise.tres" type="Animation" id=6]
 [ext_resource path="res://scripts/mazeWallGridMap.gd" type="Script" id=7]
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
@@ -63,7 +63,7 @@ light_energy = 0.1
 [node name="levelStart" parent="controlControllers" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 2, 25 )
 
-[node name="levelEnd" parent="controlControllers" instance=ExtResource( 5 )]
+[node name="controlOff" parent="controlControllers" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -23 )
 
 [node name="goal" parent="controlControllers" instance=ExtResource( 9 )]
