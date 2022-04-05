@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://elements/goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=2]
@@ -9,24 +9,8 @@
 [ext_resource path="res://elements/lift.tscn" type="PackedScene" id=7]
 [ext_resource path="res://elements/controlOff.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/mazeWallGridMap.gd" type="Script" id=9]
-[ext_resource path="res://animations/wallRise.tres" type="Animation" id=10]
 [ext_resource path="res://animations/wallRise_2.tres" type="Animation" id=11]
 [ext_resource path="res://elements/lift_2.tscn" type="PackedScene" id=12]
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 1, 0.32, 1 ) ]
-}
 
 [sub_resource type="BoxShape" id=1]
 
@@ -64,8 +48,6 @@ __meta__ = {
 }
 
 [node name="animationPlayer" type="AnimationPlayer" parent="environment/gridMaps/mazeWallGridMap"]
-anims/RESET = SubResource( 2 )
-anims/wallRise = ExtResource( 10 )
 anims/wallRise_2 = ExtResource( 11 )
 
 [node name="platformGridMap" type="GridMap" parent="environment/gridMaps"]
