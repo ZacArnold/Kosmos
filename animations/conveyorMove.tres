@@ -1,0 +1,17 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "conveyorMove"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 9 ),
+"transitions": PoolRealArray( 1e-05, 0.5, 1e-05, 0.5 ),
+"update": 0,
+"values": [ Vector3( -21, 1, -21 ), Vector3( -21, 1, -21 ), Vector3( -21, 1, -87 ), Vector3( -21, 1, -87 ) ]
+}
