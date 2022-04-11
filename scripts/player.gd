@@ -31,6 +31,11 @@ func _physics_process(delta):
 	else: 
 		maxSpeed = 12
 	
+	#Escape game
+	if Input.is_action_just_pressed("exit"):
+		get_tree().quit()
+	
+	
 	
 	##########Camera Control##########
 	if Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:
