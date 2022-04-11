@@ -11,3 +11,5 @@ func _on_levelStart_body_entered(body):
 				$animationPlayer.play("wallRise_2")
 			if get_tree().current_scene.name == "level_3":
 				$animationPlayer.play("wallRise_3")
+			if get_tree().current_scene.name == "level_4":
+				$animationPlayer.play("wallRise_4")
