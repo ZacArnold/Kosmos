@@ -31,10 +31,9 @@ func _physics_process(delta):
 	else: 
 		maxSpeed = 12
 	
-	#Escape game
+	#Escape Game
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
-	
 	
 	
 	##########Camera Control##########
@@ -195,3 +194,6 @@ func _physics_process(delta):
 	#DEBUG
 	if velocity != Vector3.ZERO:
 		print("Velocity:      ", velocity)
+
+
+
