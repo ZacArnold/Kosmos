@@ -102,6 +102,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -17, 25 )
 nextLevel = "res://levels/level_4.tscn"
 
 [node name="secret" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 3, -21 )
 script = ExtResource( 13 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
