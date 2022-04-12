@@ -73,6 +73,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -23 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -15, -23 )
 
 [node name="secret" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, 23 )
 script = ExtResource( 11 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]

@@ -1,4 +1,4 @@
 extends Node
 
 var controlAllowed = false
-var secretsFound = 0
+var secretFound = false
