@@ -23,6 +23,11 @@
 [node name="worldEnvironment" type="WorldEnvironment" parent="environment"]
 environment = ExtResource( 4 )
 
+[node name="directionalLight" type="DirectionalLight" parent="environment"]
+transform = Transform( 1, 0, 0, 0, -0.996195, 0.0871556, 0, -0.0871556, -0.996195, 0, 25, -100 )
+light_color = Color( 0.584314, 0.823529, 1, 1 )
+light_energy = 0.1
+
 [node name="gridMaps" type="Spatial" parent="environment"]
 
 [node name="mazeFloorGridMap" type="GridMap" parent="environment/gridMaps"]
@@ -70,11 +75,6 @@ script = ExtResource( 5 )
 [node name="CollisionShape" type="CollisionShape" parent="environment/fallZone"]
 shape = SubResource( 1 )
 
-[node name="directionalLight" type="DirectionalLight" parent="environment"]
-transform = Transform( 1, 0, 0, 0, -0.996195, 0.0871556, 0, -0.0871556, -0.996195, 0, 25, -100 )
-light_color = Color( 0.584314, 0.823529, 1, 1 )
-light_energy = 0.1
-
 [node name="lift" parent="environment" instance=ExtResource( 7 )]
 
 [node name="lift_2" parent="environment" instance=ExtResource( 12 )]
@@ -91,14 +91,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 2, -85 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -13, -85 )
 nextLevel = "res://levels/level_3.tscn"
 
+[node name="secret" parent="." instance=ExtResource( 10 )]
+script = ExtResource( 13 )
+
 [node name="player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 150, -23 )
-
-[node name="secret" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, -13 )
-script = ExtResource( 13 )
 
 [connection signal="animation_finished" from="environment/gridMaps/mazeWallGridMap/animationPlayer" to="controllers/levelStart" method="_on_animationPlayer_animation_finished"]
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="controllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
+[connection signal="body_entered" from="controllers/levelStart" to="secret" method="_on_levelStart_body_entered"]
 [connection signal="body_entered" from="secret" to="secret" method="_on_secret_body_entered"]

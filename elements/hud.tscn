@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://fonts/fastHandSmall.tres" type="DynamicFont" id=1]
+
+[node name="hud" type="CanvasLayer"]
+
+[node name="secretsFound" type="Label" parent="."]
+margin_top = 1058.0
+margin_right = 171.0
+margin_bottom = 1080.0
+custom_fonts/font = ExtResource( 1 )
+text = "Secrets Found:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="numSecretsFound" type="Label" parent="."]
+margin_left = 175.0
+margin_top = 1058.0
+margin_right = 208.0
+margin_bottom = 1080.0
+custom_fonts/font = ExtResource( 1 )
+text = "0/1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
