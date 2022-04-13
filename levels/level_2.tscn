@@ -79,6 +79,7 @@ shape = SubResource( 1 )
 [node name="lift" parent="environment" instance=ExtResource( 7 )]
 
 [node name="lift_2" parent="environment" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 5, -85 )
 
 [node name="controllers" type="Node" parent="."]
 
@@ -93,7 +94,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -13, -85 )
 nextLevel = "res://levels/level_3.tscn"
 
 [node name="secret" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, -13 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 26, -85 )
 script = ExtResource( 13 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
