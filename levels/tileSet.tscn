@@ -1,19 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://materials/brushedMetal.tres" type="Material" id=1]
 [ext_resource path="res://materials/tiles.tres" type="Material" id=2]
-[ext_resource path="res://models/slope.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://materials/marbleFloor.tres" type="Material" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="BoxShape" id=14]
 
-[sub_resource type="ConvexPolygonShape" id=15]
-
 [node name="blocks" type="Spatial"]
 
 [node name="blockWall" type="MeshInstance" parent="."]
+use_in_baked_light = true
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 
@@ -24,6 +21,7 @@ shape = SubResource( 14 )
 
 [node name="blockFloor" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+use_in_baked_light = true
 mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
 
@@ -31,13 +29,3 @@ material/0 = ExtResource( 2 )
 
 [node name="collisionShape" type="CollisionShape" parent="blockFloor/staticBody"]
 shape = SubResource( 14 )
-
-[node name="blockSlope" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
-mesh = ExtResource( 3 )
-material/0 = ExtResource( 4 )
-
-[node name="staticBody" type="StaticBody" parent="blockSlope"]
-
-[node name="collisionShape" type="CollisionShape" parent="blockSlope/staticBody"]
-shape = SubResource( 15 )
