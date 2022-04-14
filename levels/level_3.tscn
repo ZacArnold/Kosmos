@@ -11,7 +11,7 @@
 [ext_resource path="res://elements/goal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://animations/wallRise_3.tres" type="Animation" id=10]
 [ext_resource path="res://elements/controlOn.tscn" type="PackedScene" id=11]
-[ext_resource path="res://elements/secret.tscn" type="PackedScene" id=12]
+[ext_resource path="res://elements/greenSecret.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/secret.gd" type="Script" id=13]
 [ext_resource path="res://elements/hud.tscn" type="PackedScene" id=14]
 
@@ -103,8 +103,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 42, -23 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -17, 25 )
 nextLevel = "res://levels/level_4.tscn"
 
-[node name="secret" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 3, -21 )
+[node name="greenSecret" parent="." instance=ExtResource( 12 )]
 script = ExtResource( 13 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
@@ -116,5 +115,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 185, -23 )
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="environment/fallZone_2" to="environment/fallZone_2" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
-[connection signal="body_entered" from="controlControllers/levelStart" to="secret" method="_on_levelStart_body_entered"]
-[connection signal="body_entered" from="secret" to="secret" method="_on_secret_body_entered"]
+[connection signal="body_entered" from="controlControllers/levelStart" to="greenSecret" method="_on_levelStart_body_entered"]
+[connection signal="body_entered" from="greenSecret" to="greenSecret" method="_on_secret_body_entered"]

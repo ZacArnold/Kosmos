@@ -9,11 +9,11 @@
 [ext_resource path="res://elements/lift.tscn" type="PackedScene" id=7]
 [ext_resource path="res://elements/controlOff.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/mazeWallGridMap.gd" type="Script" id=9]
-[ext_resource path="res://elements/secret.tscn" type="PackedScene" id=10]
 [ext_resource path="res://animations/wallRise_2.tres" type="Animation" id=11]
 [ext_resource path="res://elements/lift_2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/secret.gd" type="Script" id=13]
 [ext_resource path="res://elements/hud.tscn" type="PackedScene" id=14]
+[ext_resource path="res://elements/redSecret.tscn" type="PackedScene" id=15]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -93,7 +93,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 2, -85 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -13, -85 )
 nextLevel = "res://levels/level_3.tscn"
 
-[node name="secret" parent="." instance=ExtResource( 10 )]
+[node name="redSecret" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 26, -85 )
 script = ExtResource( 13 )
 
@@ -105,5 +105,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 150, -23 )
 [connection signal="animation_finished" from="environment/gridMaps/mazeWallGridMap/animationPlayer" to="controllers/levelStart" method="_on_animationPlayer_animation_finished"]
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="controllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
-[connection signal="body_entered" from="controllers/levelStart" to="secret" method="_on_levelStart_body_entered"]
-[connection signal="body_entered" from="secret" to="secret" method="_on_secret_body_entered"]
+[connection signal="body_entered" from="controllers/levelStart" to="redSecret" method="_on_levelStart_body_entered"]
+[connection signal="body_entered" from="redSecret" to="redSecret" method="_on_secret_body_entered"]
