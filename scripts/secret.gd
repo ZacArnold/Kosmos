@@ -3,7 +3,8 @@ extends Area
 onready var global = get_node("/root/Global")
 
 func _ready():
-	visible = false
+	if get_tree().current_scene.name != "level_3":
+		visible = false
 
 func _on_secret_body_entered(body):
 	if body.name == "player":

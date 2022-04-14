@@ -84,6 +84,7 @@ script = ExtResource( 8 )
 shape = SubResource( 9 )
 
 [node name="conveyor" parent="environment" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 19, -87 )
 
 [node name="controlControllers" type="Node" parent="."]
 
@@ -104,6 +105,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -17, 25 )
 nextLevel = "res://levels/level_4.tscn"
 
 [node name="greenSecret" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 65, -70 )
 script = ExtResource( 13 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
