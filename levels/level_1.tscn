@@ -26,7 +26,6 @@ environment = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, -0.996195, 0.0871556, 0, -0.0871556, -0.996195, 0, 25, -100 )
 light_color = Color( 0.584314, 0.823529, 1, 1 )
 light_energy = 0.1
-light_bake_mode = 2
 
 [node name="gridMaps" type="Spatial" parent="environment"]
 
