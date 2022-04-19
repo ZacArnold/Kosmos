@@ -109,4 +109,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 125, 49 )
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="goldSecret" method="_on_levelStart_body_entered"]
+[connection signal="body_entered" from="controlControllers/levelStart" to="blueSecret" method="_on_levelStart_body_entered"]
 [connection signal="body_entered" from="goldSecret" to="goldSecret" method="_on_secret_body_entered"]
+[connection signal="body_entered" from="blueSecret" to="blueSecret" method="_on_secret_body_entered"]
