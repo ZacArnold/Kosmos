@@ -6,3 +6,4 @@ var rustedSecret = false
 var greenSecret = false
 var redSecret = false
 var goldSecret = false
+var blueSecret = false
