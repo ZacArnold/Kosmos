@@ -66,7 +66,7 @@ data = {
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 44, 0 )
+"_editor_floor_": Vector3( 0, 43, 0 )
 }
 
 [node name="fallZone" type="Area" parent="environment"]
@@ -98,7 +98,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43, -5, -15 )
 script = ExtResource( 12 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 150, 49 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 175, 49 )
 
 [node name="hud" parent="." instance=ExtResource( 6 )]
 
