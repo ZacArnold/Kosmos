@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/fastHandSmall.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/secretsFound.gd" type="Script" id=2]
+[ext_resource path="res://textures/cleanMetal/Metal038_PREVIEW.png" type="Texture" id=3]
+[ext_resource path="res://textures/redPaintedMetal/PaintedMetal004_PREVIEW.png" type="Texture" id=4]
+[ext_resource path="res://textures/cleanGold/Metal007_PREVIEW.png" type="Texture" id=5]
+[ext_resource path="res://textures/greenPaintedMetal/PaintedMetal005_PREVIEW.png" type="Texture" id=6]
+[ext_resource path="res://textures/emptySecret.png" type="Texture" id=7]
+
+[node name="hud" type="CanvasLayer"]
+
+[node name="secretsFound" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 927.0
+margin_right = 404.0
+margin_bottom = 970.0
+custom_fonts/font = ExtResource( 1 )
+text = "Secrets Found:"
+script = ExtResource( 2 )
+
+[node name="emptySecret" type="TextureRect" parent="secretsFound"]
+margin_left = -3.0
+margin_top = 42.0
+margin_right = 1021.0
+margin_bottom = 1066.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
+[node name="cleanMetalSecret" type="TextureRect" parent="secretsFound"]
+margin_left = -3.0
+margin_top = 42.0
+margin_right = 1021.0
+margin_bottom = 1066.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="emptySecret2" type="TextureRect" parent="secretsFound"]
+margin_left = 106.0
+margin_top = 44.0
+margin_right = 1130.0
+margin_bottom = 1068.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
+[node name="redSecret" type="TextureRect" parent="secretsFound"]
+margin_left = 101.0
+margin_top = 38.0
+margin_right = 1125.0
+margin_bottom = 1062.0
+rect_scale = Vector2( 0.11, 0.11 )
+texture = ExtResource( 4 )
+
+[node name="emptySecret3" type="TextureRect" parent="secretsFound"]
+margin_left = 212.0
+margin_top = 44.0
+margin_right = 1236.0
+margin_bottom = 1068.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
+[node name="greenSecret" type="TextureRect" parent="secretsFound"]
+margin_left = 207.0
+margin_top = 38.0
+margin_right = 1231.0
+margin_bottom = 1062.0
+rect_scale = Vector2( 0.11, 0.11 )
+texture = ExtResource( 6 )
+
+[node name="emptySecret4" type="TextureRect" parent="secretsFound"]
+margin_left = 319.0
+margin_top = 42.0
+margin_right = 1343.0
+margin_bottom = 1066.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
+[node name="goldSecret" type="TextureRect" parent="secretsFound"]
+margin_left = 319.0
+margin_top = 42.0
+margin_right = 1343.0
+margin_bottom = 1066.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )

@@ -38,7 +38,7 @@ func _physics_process(delta):
 	#Secret Collection
 	if get_tree().current_scene.name == "level_1":
 		if global.secretFound == true:
-			global.rustedSecret = true
+			global.cleanMetalSecret = true
 	if get_tree().current_scene.name == "level_2":
 		if global.secretFound == true:
 			global.redSecret = true
