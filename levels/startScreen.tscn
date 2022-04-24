@@ -76,4 +76,7 @@ __meta__ = {
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
+[node name="bgMusic" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
 [connection signal="pressed" from="startScreenUI/button" to="startScreenUI/button" method="_on_Button_pressed"]
