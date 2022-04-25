@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tick_002.ogg-eb7f9a059636b79d70a38c249a400377.oggstr"
+
+[deps]
+
+source_file="res://sfx/kenney_interfacesounds/Audio/tick_002.ogg"
+dest_files=[ "res://.import/tick_002.ogg-eb7f9a059636b79d70a38c249a400377.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
