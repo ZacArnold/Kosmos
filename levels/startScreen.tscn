@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://environments/planetsideEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://elements/player.tscn" type="PackedScene" id=2]
@@ -7,9 +7,16 @@
 [ext_resource path="res://fonts/Cube.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=6]
 [ext_resource path="res://music/startMenu.ogg" type="AudioStream" id=7]
+[ext_resource path="res://fonts/fastHandSmall.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 35
+size = 25
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
@@ -23,7 +30,7 @@ environment = ExtResource( 1 )
 mesh_library = ExtResource( 6 )
 use_in_baked_light = true
 data = {
-"cells": PoolIntArray( -131072, 0, 1, -131071, 0, 1, -65538, 0, 1, -65537, 0, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
+"cells": PoolIntArray( -131072, 0, 1, -65537, 0, 1, -131070, 1, 1, -131069, 1, 1, -131068, 1, 1, -65541, 1, 1, -65540, 1, 1, -65539, 1, 1, -131070, 2, 1, -131069, 2, 1, -131068, 2, 1, -65541, 2, 1, -65540, 2, 1, -65539, 2, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -38,9 +45,6 @@ light_energy = 0.1
 [node name="startScreenUI" type="Control" parent="."]
 margin_right = 1920.0
 margin_bottom = 1080.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="title" type="Label" parent="startScreenUI"]
 anchor_right = 1.0
@@ -71,9 +75,145 @@ custom_fonts/font = SubResource( 1 )
 text = "START"
 flat = true
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="wasdKeys" type="Control" parent="startScreenUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="movement" type="Label" parent="startScreenUI/wasdKeys"]
+margin_left = 50.0
+margin_top = 825.0
+margin_right = 473.0
+margin_bottom = 880.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "MOVEMENT"
+
+[node name="wKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
+margin_left = 125.0
+margin_top = 900.0
+margin_right = 175.0
+margin_bottom = 950.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="w" type="Label" parent="startScreenUI/wasdKeys/wKey"]
+margin_left = 11.0
+margin_top = 5.0
+margin_right = 51.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "W"
+
+[node name="sKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
+margin_left = 125.0
+margin_top = 975.0
+margin_right = 175.0
+margin_bottom = 1025.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="s" type="Label" parent="startScreenUI/wasdKeys/sKey"]
+margin_left = 11.0
+margin_top = 5.0
+margin_right = 51.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "S"
+
+[node name="dKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
+margin_left = 200.0
+margin_top = 975.0
+margin_right = 250.0
+margin_bottom = 1025.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="d" type="Label" parent="startScreenUI/wasdKeys/dKey"]
+margin_left = 12.0
+margin_top = 5.0
+margin_right = 52.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "D"
+
+[node name="aKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
+margin_left = 50.0
+margin_top = 975.0
+margin_right = 100.0
+margin_bottom = 1025.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="a" type="Label" parent="startScreenUI/wasdKeys/aKey"]
+margin_left = 11.0
+margin_top = 5.0
+margin_right = 51.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "A"
+
+[node name="spaceKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
+margin_left = 275.0
+margin_top = 975.0
+margin_right = 475.0
+margin_bottom = 1025.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="space" type="Label" parent="startScreenUI/wasdKeys/spaceKey"]
+margin_left = 89.0
+margin_top = 5.0
+margin_right = 112.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "_"
+
+[node name="qeKeys" type="Control" parent="startScreenUI"]
+margin_left = 1625.0
+margin_right = 1665.0
+margin_bottom = 40.0
+
+[node name="camera control" type="Label" parent="startScreenUI/qeKeys"]
+margin_left = -150.0
+margin_top = 825.0
+margin_right = 248.0
+margin_bottom = 880.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "ROTATION"
+
+[node name="eKey" type="ColorRect" parent="startScreenUI/qeKeys"]
+margin_left = 200.0
+margin_top = 900.0
+margin_right = 250.0
+margin_bottom = 950.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="e" type="Label" parent="startScreenUI/qeKeys/eKey"]
+margin_left = 12.0
+margin_top = 5.0
+margin_right = 52.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "E"
+
+[node name="qKey" type="ColorRect" parent="startScreenUI/qeKeys"]
+margin_left = 50.0
+margin_top = 900.0
+margin_right = 100.0
+margin_bottom = 950.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="q" type="Label" parent="startScreenUI/qeKeys/qKey"]
+margin_left = 11.0
+margin_top = 5.0
+margin_right = 51.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Q"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
