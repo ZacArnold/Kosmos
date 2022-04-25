@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/scroll_002.ogg-abb3382f82cd6b494c3e0773490f389a.oggstr"
+path="res://.import/scroll_002.ogg-4a464e4e10b78c0df00ccd4255ca4e39.oggstr"
 
 [deps]
 
-source_file="res://sfx/kenney_interfacesounds/Audio/scroll_002.ogg"
-dest_files=[ "res://.import/scroll_002.ogg-abb3382f82cd6b494c3e0773490f389a.oggstr" ]
+source_file="res://sfx/kenney_interfacesounds/scroll_002.ogg"
+dest_files=[ "res://.import/scroll_002.ogg-4a464e4e10b78c0df00ccd4255ca4e39.oggstr" ]
 
 [params]
 

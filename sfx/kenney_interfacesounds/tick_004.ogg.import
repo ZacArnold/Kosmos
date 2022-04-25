@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/tick_004.ogg-5f17cddf78dccc4471bc7dea71eb31ae.oggstr"
+path="res://.import/tick_004.ogg-a79c46a90c5b89dcfb2fce47bcc03e81.oggstr"
 
 [deps]
 
-source_file="res://sfx/kenney_interfacesounds/Audio/tick_004.ogg"
-dest_files=[ "res://.import/tick_004.ogg-5f17cddf78dccc4471bc7dea71eb31ae.oggstr" ]
+source_file="res://sfx/kenney_interfacesounds/tick_004.ogg"
+dest_files=[ "res://.import/tick_004.ogg-a79c46a90c5b89dcfb2fce47bcc03e81.oggstr" ]
 
 [params]
 
