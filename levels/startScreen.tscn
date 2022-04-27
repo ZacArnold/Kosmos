@@ -30,7 +30,7 @@ environment = ExtResource( 1 )
 mesh_library = ExtResource( 6 )
 use_in_baked_light = true
 data = {
-"cells": PoolIntArray( -131072, 0, 1, -65537, 0, 1, -131070, 1, 1, -131069, 1, 1, -131068, 1, 1, -65541, 1, 1, -65540, 1, 1, -65539, 1, 1, -131070, 2, 1, -131069, 2, 1, -131068, 2, 1, -65541, 2, 1, -65540, 2, 1, -65539, 2, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
+"cells": PoolIntArray( -131072, 0, 1, -65537, 0, 1, -65541, 1, 1, -65540, 1, 1, -65539, 1, 1, -65541, 2, 1, -65540, 2, 1, -65539, 2, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -80,14 +80,36 @@ script = ExtResource( 4 )
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="movement" type="Label" parent="startScreenUI/wasdKeys"]
+[node name="controls" type="Label" parent="startScreenUI/wasdKeys"]
 margin_left = 50.0
 margin_top = 825.0
 margin_right = 473.0
 margin_bottom = 880.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "MOVEMENT"
+text = "CONTROLS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="qKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
+margin_left = 50.0
+margin_top = 900.0
+margin_right = 100.0
+margin_bottom = 950.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="q" type="Label" parent="startScreenUI/wasdKeys/qKey"]
+margin_left = 11.0
+margin_top = 5.0
+margin_right = 51.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Q"
 
 [node name="wKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
 margin_left = 125.0
@@ -95,6 +117,9 @@ margin_top = 900.0
 margin_right = 175.0
 margin_bottom = 950.0
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="w" type="Label" parent="startScreenUI/wasdKeys/wKey"]
 margin_left = 11.0
@@ -104,6 +129,25 @@ margin_bottom = 48.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "W"
+
+[node name="eKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
+margin_left = 200.0
+margin_top = 900.0
+margin_right = 250.0
+margin_bottom = 950.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="e" type="Label" parent="startScreenUI/wasdKeys/eKey"]
+margin_left = 12.0
+margin_top = 5.0
+margin_right = 52.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "E"
 
 [node name="sKey" type="ColorRect" parent="startScreenUI/wasdKeys"]
 margin_left = 125.0
@@ -168,52 +212,6 @@ margin_bottom = 48.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "_"
-
-[node name="qeKeys" type="Control" parent="startScreenUI"]
-margin_left = 1625.0
-margin_right = 1665.0
-margin_bottom = 40.0
-
-[node name="camera control" type="Label" parent="startScreenUI/qeKeys"]
-margin_left = -150.0
-margin_top = 825.0
-margin_right = 248.0
-margin_bottom = 880.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "ROTATION"
-
-[node name="eKey" type="ColorRect" parent="startScreenUI/qeKeys"]
-margin_left = 200.0
-margin_top = 900.0
-margin_right = 250.0
-margin_bottom = 950.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="e" type="Label" parent="startScreenUI/qeKeys/eKey"]
-margin_left = 12.0
-margin_top = 5.0
-margin_right = 52.0
-margin_bottom = 48.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "E"
-
-[node name="qKey" type="ColorRect" parent="startScreenUI/qeKeys"]
-margin_left = 50.0
-margin_top = 900.0
-margin_right = 100.0
-margin_bottom = 950.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="q" type="Label" parent="startScreenUI/qeKeys/qKey"]
-margin_left = 11.0
-margin_top = 5.0
-margin_right = 51.0
-margin_bottom = 48.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "Q"
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
