@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://environments/planetsideEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://animations/wallRise_3.tres" type="Animation" id=10]
 [ext_resource path="res://elements/controlOn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://elements/greenSecret.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scripts/secret.gd" type="Script" id=13]
 [ext_resource path="res://elements/hud.tscn" type="PackedScene" id=14]
 [ext_resource path="res://music/level_3.ogg" type="AudioStream" id=15]
 
@@ -107,7 +106,6 @@ nextLevel = "res://levels/level_4.tscn"
 
 [node name="greenSecret" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 65, -70 )
-script = ExtResource( 13 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 185, -23 )

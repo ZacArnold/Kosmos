@@ -24,7 +24,7 @@ environment = ExtResource( 1 )
 mesh_library = ExtResource( 6 )
 use_in_baked_light = true
 data = {
-"cells": PoolIntArray( -131072, 0, 1, -131071, 0, 1, -65538, 0, 1, -65537, 0, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
+"cells": PoolIntArray( -131072, 0, 1, -131071, 0, 1, -65538, 0, 1, -65537, 0, 1, -65541, 1, 1, -65540, 1, 1, -65539, 1, 1, -65541, 2, 1, -65540, 2, 1, -65539, 2, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -69,10 +69,15 @@ custom_fonts/font = SubResource( 1 )
 text = "QUIT"
 flat = true
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
 [node name="hud" parent="." instance=ExtResource( 8 )]
+offset = Vector2( 50, -60 )
+transform = Transform2D( 1, 0, 0, 1, 50, -60 )
 
 [node name="bgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

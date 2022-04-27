@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://environments/planetsideEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
 [ext_resource path="res://elements/goal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://elements/cleanMetalSecret.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scripts/secret.gd" type="Script" id=11]
 [ext_resource path="res://elements/hud.tscn" type="PackedScene" id=12]
 [ext_resource path="res://music/level_1.ogg" type="AudioStream" id=13]
 
@@ -77,7 +76,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -15, -23 )
 
 [node name="cleanMetalSecret" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, 23 )
-script = ExtResource( 11 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 125, 25 )

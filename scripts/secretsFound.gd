@@ -8,7 +8,7 @@ func _ready():
 	$greenSecret.visible = false
 	$goldSecret.visible = false
 
-func _process(delta):
+func _process(_delta):
 	if global.cleanMetalSecret == true:
 		$cleanMetalSecret.visible = true
 	if global.redSecret == true:
