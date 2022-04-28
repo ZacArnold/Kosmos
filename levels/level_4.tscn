@@ -90,7 +90,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 90, -93 )
 
 [node name="goal" parent="controlControllers" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -5, -93 )
-nextLevel = "res://levels/endScreen.tscn"
+nextLevel = "res://levels/level_5.tscn"
 
 [node name="goldSecret" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43, -5, -15 )
