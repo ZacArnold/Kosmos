@@ -97,7 +97,7 @@ nextLevel = "res://levels/level_3.tscn"
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 26, -85 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 150, -23 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 425, -23 )
 
 [node name="hud" parent="." instance=ExtResource( 14 )]
 

@@ -19,9 +19,6 @@ var maxSpeed = 12
 var playerDirection = 0
 ##################################
 
-func _on_secret_secret_found():
-	pass
-
 
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO

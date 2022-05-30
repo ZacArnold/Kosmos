@@ -78,7 +78,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -15, -23 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, 23 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 125, 25 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 320, 25 )
 
 [node name="hud" parent="." instance=ExtResource( 12 )]
 
