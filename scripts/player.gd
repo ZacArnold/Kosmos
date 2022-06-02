@@ -17,17 +17,16 @@ var jumpVelocity = Vector3.ZERO
 
 var maxSpeed = 12
 var playerDirection = 0
-
-var startGame = false
 ##################################
 
 
 func _on_button_pressed():
-	startGame = true
+	global.startGame = true
 
 func _on_start_body_entered(body):
 	if body.name == "player":
 		get_tree().change_scene("res://levels/level_1.tscn")
+		global.startGame = true
 
 func _on_controlOff_body_entered(_body):
 	pass
@@ -47,6 +46,12 @@ func _physics_process(delta):
 	#Escape Game
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
+	
+	#Ball Roll Sound
+	if velocity.x > 0 or velocity.z > 0:
+		$ballRoll.volume_db = 0
+	else:
+		$ballRoll.volume_db = -80
 	
 	#Secret Collection
 	if get_tree().current_scene.name == "level_1":
@@ -179,7 +184,7 @@ func _physics_process(delta):
 	
 	
 	##########Gravity##########
-	if not is_on_floor() and startGame == true:
+	if not is_on_floor() and global.startGame == true:
 		velocity.y -= GRAVITY * (2 * delta)
 	else:
 		velocity.y = 0

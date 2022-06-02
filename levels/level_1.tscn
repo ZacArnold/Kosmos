@@ -90,5 +90,4 @@ autoplay = true
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="cleanMetalSecret" method="_on_levelStart_body_entered"]
-[connection signal="body_entered" from="controlControllers/controlOff" to="player" method="_on_controlOff_body_entered"]
 [connection signal="body_entered" from="cleanMetalSecret" to="cleanMetalSecret" method="_on_secret_body_entered"]
