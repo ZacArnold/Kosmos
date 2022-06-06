@@ -1,7 +1,5 @@
 extends Area
 
-onready var global = get_node("/root/Global")
-
 func _ready():
 	visible = false
 

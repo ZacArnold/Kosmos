@@ -1,7 +1,6 @@
 extends Area
 
 export (String, FILE) var nextLevel = "res://levels/level_2.tscn"
-onready var global = get_node("/root/Global")
 
 
 func _on_goal_body_entered(body):

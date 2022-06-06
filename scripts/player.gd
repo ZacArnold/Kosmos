@@ -1,12 +1,10 @@
 extends KinematicBody
 
-onready var global = get_node("/root/Global")
-
 
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 10
+const JUMPPOWER = 15
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 
@@ -26,11 +24,6 @@ func _on_button_pressed():
 func _on_start_body_entered(body):
 	if body.name == "player":
 		get_tree().change_scene("res://levels/level_1.tscn")
-		global.startGame = true
-
-func _on_controlOff_body_entered(_body):
-	pass
-
 
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO
@@ -48,7 +41,7 @@ func _physics_process(delta):
 		get_tree().quit()
 	
 	#Ball Roll Sound
-	if velocity.x > 0 or velocity.z > 0:
+	if Input.is_action_pressed("backward") or Input.is_action_pressed("forward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		$ballRoll.volume_db = 0
 	else:
 		$ballRoll.volume_db = -80
@@ -84,16 +77,17 @@ func _physics_process(delta):
 	inputPivotVelocity = inputPivotVelocity.normalized() * PIVOTSPEED
 	
 	# If there's input, accelerate to the input velocity
-	if inputPivotVelocity.length() > 0:
+	if inputPivotVelocity.length() > 0 and global.controlAllowed == true:
 		pivotVelocity = pivotVelocity.linear_interpolate(inputPivotVelocity, ACCELERATION)
-	elif inputPivotVelocity.length() < 0:
+	elif inputPivotVelocity.length() < 0 and global.controlAllowed == true:
 		pivotVelocity = pivotVelocity.linear_interpolate(inputPivotVelocity, ACCELERATION)
-	else:
+	elif  global.controlAllowed == true:
 	# If there's no input, slow down to (0, 0)
 		pivotVelocity = pivotVelocity.linear_interpolate(Vector3.ZERO, FRICTION)
 	
 	#Rotates Camera
-	$pivot.rotate_y(deg2rad(pivotVelocity.y))
+	if global.controlAllowed == true:
+		$pivot.rotate_y(deg2rad(pivotVelocity.y))
 	##################################
 	
 	
@@ -204,11 +198,11 @@ func _physics_process(delta):
 	inputRotateVelocity = inputRotateVelocity.normalized() * maxSpeed
 	
 	# If there's input, accelerate to the input velocity
-	if inputVelocity.length() > 0:
+	if inputVelocity.length() > 0 and global.controlAllowed == true:
 		velocity.x = lerp(velocity.x, inputVelocity.x, ACCELERATION)
 		velocity.z = lerp(velocity.z, inputVelocity.z, ACCELERATION)
 		rotateVelocity = rotateVelocity.linear_interpolate(inputRotateVelocity, ACCELERATION)
-	else:
+	elif  global.controlAllowed == true:
 	# If there's no input, slow down to (0, 0)
 		velocity.x = lerp(velocity.x, 0, FRICTION)
 		velocity.z = lerp(velocity.z, 0, FRICTION)
@@ -216,8 +210,9 @@ func _physics_process(delta):
 	
 	#Moves and rotates the player with accelerating and deccelerating velocity
 	velocity = move_and_slide(velocity, Vector3.UP)
-	$meshInstance.rotate_z(deg2rad(rotateVelocity.z))
-	$meshInstance.rotate_x(deg2rad(rotateVelocity.x))
+	if global.controlAllowed == true:
+		$meshInstance.rotate_z(deg2rad(rotateVelocity.z))
+		$meshInstance.rotate_x(deg2rad(rotateVelocity.x))
 	###################################
 	
 	

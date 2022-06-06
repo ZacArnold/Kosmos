@@ -2,6 +2,7 @@ extends Node
 
 var startGame = false
 var controlAllowed = false
+
 var secretFound = false
 var cleanMetalSecret = false
 var greenSecret = false

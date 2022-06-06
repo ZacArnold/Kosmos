@@ -1,7 +1,5 @@
 extends GridMap
 
-onready var global = get_node("/root/Global")
-
 func _on_levelStart_body_entered(body):
 	if body.name == "player":
 		if global.controlAllowed == false:

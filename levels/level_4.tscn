@@ -108,4 +108,5 @@ autoplay = true
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="goldSecret" method="_on_levelStart_body_entered"]
+[connection signal="body_entered" from="controlControllers/goal" to="player" method="_on_goal_body_entered"]
 [connection signal="body_entered" from="goldSecret" to="goldSecret" method="_on_secret_body_entered"]
