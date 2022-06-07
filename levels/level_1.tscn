@@ -72,7 +72,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 2, 25 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -23 )
 
 [node name="goal" parent="controlControllers" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -15, -23 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -4, -23 )
 
 [node name="cleanMetalSecret" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, 23 )

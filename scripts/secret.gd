@@ -21,3 +21,8 @@ func _process(_delta):
 
 func _on_pickupConfirm_finished():
 	queue_free()
+
+
+func _on_controlOn_body_entered(body):
+	if body.name == "player":
+		visible = true
