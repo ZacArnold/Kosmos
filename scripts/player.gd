@@ -23,6 +23,7 @@ func _on_button_pressed():
 
 func _on_start_body_entered(body):
 	if body.name == "player":
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://levels/level_1.tscn")
 
 func _physics_process(delta):

@@ -8,7 +8,7 @@
 [ext_resource path="res://elements/conveyor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/mazeWallGridMap.gd" type="Script" id=7]
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
-[ext_resource path="res://elements/goal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://elements/fadeTransition.tscn" type="PackedScene" id=9]
 [ext_resource path="res://animations/wallRise_3.tres" type="Animation" id=10]
 [ext_resource path="res://elements/controlOn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://elements/greenSecret.tscn" type="PackedScene" id=12]
@@ -100,10 +100,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 16, -23 )
 [node name="controlOn" parent="controlControllers" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 42, -23 )
 
-[node name="goal" parent="controlControllers" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -17, 25 )
-nextLevel = "res://levels/level_4.tscn"
-
 [node name="greenSecret" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 65, -70 )
 
@@ -111,6 +107,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 65, -70 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 465, -23 )
 
 [node name="hud" parent="." instance=ExtResource( 14 )]
+
+[node name="fadeTransition" parent="." instance=ExtResource( 9 )]
 
 [node name="bgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
@@ -120,6 +118,7 @@ autoplay = true
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="environment/fallZone_2" to="environment/fallZone_2" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
+[connection signal="body_entered" from="controlControllers/controlOff" to="fadeTransition" method="_on_controlOff_body_entered"]
 [connection signal="body_entered" from="controlControllers/controlOn" to="greenSecret" method="_on_controlOn_body_entered"]
-[connection signal="body_entered" from="controlControllers/goal" to="player" method="_on_goal_body_entered"]
 [connection signal="body_entered" from="greenSecret" to="greenSecret" method="_on_secret_body_entered"]
+[connection signal="transitioned" from="fadeTransition" to="controlControllers/controlOff" method="_on_fadeTransition_transitioned"]
