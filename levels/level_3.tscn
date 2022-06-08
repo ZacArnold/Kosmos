@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://environments/planetsideEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://music/level_3.ogg" type="AudioStream" id=15]
 
 [sub_resource type="BoxShape" id=9]
+
+[sub_resource type="BoxShape" id=10]
 
 [node name="level_3" type="Spatial"]
 
@@ -100,6 +102,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 16, -23 )
 [node name="controlOn" parent="controlControllers" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 42, -23 )
 
+[node name="fovFar" type="Area" parent="controlControllers"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 21, -87 )
+
+[node name="collisionShape" type="CollisionShape" parent="controlControllers/fovFar"]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0 )
+shape = SubResource( 10 )
+
 [node name="greenSecret" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 65, -70 )
 
@@ -120,5 +129,6 @@ autoplay = true
 [connection signal="body_entered" from="controlControllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
 [connection signal="body_entered" from="controlControllers/controlOff" to="fadeTransition" method="_on_controlOff_body_entered"]
 [connection signal="body_entered" from="controlControllers/controlOn" to="greenSecret" method="_on_controlOn_body_entered"]
+[connection signal="body_entered" from="controlControllers/fovFar" to="player" method="_on_fovFar_body_entered"]
 [connection signal="body_entered" from="greenSecret" to="greenSecret" method="_on_secret_body_entered"]
 [connection signal="transitioned" from="fadeTransition" to="controlControllers/controlOff" method="_on_fadeTransition_transitioned"]

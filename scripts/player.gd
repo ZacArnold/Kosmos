@@ -4,7 +4,7 @@ extends KinematicBody
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 15
+const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 
@@ -17,6 +17,15 @@ var maxSpeed = 12
 var playerDirection = 0
 ##################################
 
+func _ready():
+	if get_tree().current_scene.name == "level_1":
+		$pivot/camera.near = 0
+	if get_tree().current_scene.name == "level_2":
+		$pivot/camera.near = 0
+	if get_tree().current_scene.name == "level_3":
+		$pivot/camera.near = 5.5
+	if get_tree().current_scene.name == "level_4":
+		$pivot/camera.near = 0
 
 func _on_button_pressed():
 	global.startGame = true
@@ -25,6 +34,10 @@ func _on_start_body_entered(body):
 	if body.name == "player":
 # warning-ignore:return_value_discarded
 		get_tree().change_scene("res://levels/level_1.tscn")
+
+func _on_fovFar_body_entered(body):
+	if body.name == "player":
+		$pivot/camera.near = 0
 
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO
