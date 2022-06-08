@@ -18,14 +18,10 @@ var playerDirection = 0
 ##################################
 
 func _ready():
-	if get_tree().current_scene.name == "level_1":
-		$pivot/camera.near = 0
-	if get_tree().current_scene.name == "level_2":
-		$pivot/camera.near = 0
 	if get_tree().current_scene.name == "level_3":
 		$pivot/camera.near = 5.5
-	if get_tree().current_scene.name == "level_4":
-		$pivot/camera.near = 0
+	else:
+		$pivot/camera.near = 0.05
 
 func _on_button_pressed():
 	global.startGame = true
@@ -37,7 +33,7 @@ func _on_start_body_entered(body):
 
 func _on_fovFar_body_entered(body):
 	if body.name == "player":
-		$pivot/camera.near = 0
+		$pivot/camera.near = 0.05
 
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO

@@ -95,6 +95,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 2, -23 )
 
 [node name="controlOff" parent="controlControllers" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -2, 25 )
+nextLevel = "res://levels/level_4.tscn"
 
 [node name="controlOff_2" parent="controlControllers" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 16, -23 )
