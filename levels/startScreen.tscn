@@ -228,6 +228,7 @@ text = "_"
 
 [node name="bgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -5.0
 autoplay = true
 
 [connection signal="body_entered" from="start" to="player" method="_on_start_body_entered"]

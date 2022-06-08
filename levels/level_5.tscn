@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://environments/planetsideEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scripts/mazeWallGridMap.gd" type="Script" id=7]
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
 [ext_resource path="res://elements/fadeTransition.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sfx/rock_metal_slide_2.wav" type="AudioStream" id=10]
 [ext_resource path="res://animations/wallRise_4.tres" type="Animation" id=13]
 [ext_resource path="res://music/level_4.ogg" type="AudioStream" id=14]
 
@@ -55,6 +56,9 @@ __meta__ = {
 [node name="animationPlayer" type="AnimationPlayer" parent="environment/gridMaps/mazeWallGridMap"]
 anims/wallRise_4 = ExtResource( 13 )
 
+[node name="audioStreamPlayer" type="AudioStreamPlayer" parent="environment/gridMaps/mazeWallGridMap"]
+stream = ExtResource( 10 )
+
 [node name="platformGridMap" type="GridMap" parent="environment/gridMaps"]
 mesh_library = ExtResource( 2 )
 use_in_baked_light = true
@@ -89,6 +93,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 175, 0 )
 
 [node name="bgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+volume_db = -10.0
 autoplay = true
 
 [connection signal="animation_finished" from="environment/gridMaps/mazeWallGridMap/animationPlayer" to="controlControllers/levelStart" method="_on_animationPlayer_animation_finished"]
