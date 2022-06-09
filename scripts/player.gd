@@ -7,6 +7,7 @@ const ACCELERATION = 0.075
 const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
+const BOUNCEPOWER = 50
 
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
@@ -19,7 +20,7 @@ var playerDirection = 0
 
 func _ready():
 	if get_tree().current_scene.name == "level_3":
-		$pivot/camera.near = 5.5
+		$pivot/camera.near = 5.83
 	else:
 		$pivot/camera.near = 0.05
 
@@ -34,6 +35,12 @@ func _on_start_body_entered(body):
 func _on_fovFar_body_entered(body):
 	if body.name == "player":
 		$pivot/camera.near = 0.05
+
+func _on_bouncePad_body_entered(body):
+	print("bounce")
+	if body.name == "player":
+		velocity.y = 0
+		velocity.y = BOUNCEPOWER
 
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://environments/planetsideEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://libs/wallLib.tres" type="MeshLibrary" id=2]
@@ -10,8 +10,12 @@
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
 [ext_resource path="res://elements/fadeTransition.tscn" type="PackedScene" id=9]
 [ext_resource path="res://sfx/rock_metal_slide_2.wav" type="AudioStream" id=10]
+[ext_resource path="res://elements/bouncePad.tscn" type="PackedScene" id=11]
+[ext_resource path="res://elements/controlOn.tscn" type="PackedScene" id=12]
 [ext_resource path="res://animations/wallRise_4.tres" type="Animation" id=13]
 [ext_resource path="res://music/level_4.ogg" type="AudioStream" id=14]
+[ext_resource path="res://scripts/bouncePad.gd" type="Script" id=15]
+[ext_resource path="res://elements/bouncePadArea.tscn" type="PackedScene" id=16]
 
 [sub_resource type="BoxShape" id=9]
 
@@ -63,11 +67,11 @@ stream = ExtResource( 10 )
 mesh_library = ExtResource( 2 )
 use_in_baked_light = true
 data = {
-"cells": PoolIntArray(  )
+"cells": PoolIntArray( 1900544, 0, 1, 1900545, 0, 1, 1900546, 0, 1, 1900547, 0, 1, 1900548, 0, 1, 1900549, 0, 1, 1900550, 0, 1, 1966074, 0, 1, 1966075, 0, 1, 1966076, 0, 1, 1966077, 0, 1, 1966078, 0, 1, 1966079, 0, 1, 1966080, 0, 0, 1966081, 0, 0, 1966082, 0, 0, 1966083, 0, 0, 1966084, 0, 0, 1966085, 0, 0, 1966086, 0, 1, 2031610, 0, 1, 2031611, 0, 0, 2031612, 0, 0, 2031613, 0, 0, 2031614, 0, 0, 2031615, 0, 0, 1900544, 1, 1, 1900545, 1, 1, 1900546, 1, 1, 1900547, 1, 1, 1900548, 1, 1, 1900549, 1, 1, 1900550, 1, 1, 1966074, 1, 1, 1966075, 1, 1, 1966076, 1, 1, 1966077, 1, 1, 1966078, 1, 1, 1966079, 1, 1, 1966080, 1, 0, 1966081, 1, 0, 1966082, 1, 0, 1966083, 1, 0, 1966084, 1, 0, 1966085, 1, 0, 1966086, 1, 1, 2031610, 1, 1, 2031611, 1, 0, 2031612, 1, 0, 2031613, 1, 0, 2031614, 1, 0, 2031615, 1, 0, 1900544, 2, 1, 1900545, 2, 1, 1900546, 2, 1, 1900547, 2, 1, 1900548, 2, 1, 1900549, 2, 1, 1900550, 2, 1, 1966074, 2, 1, 1966075, 2, 1, 1966076, 2, 1, 1966077, 2, 1, 1966078, 2, 1, 1966079, 2, 1, 1966080, 2, 0, 1966081, 2, 0, 1966082, 2, 1, 1966083, 2, 1, 1966084, 2, 1, 1966085, 2, 1, 1966086, 2, 1, 2031610, 2, 1, 2031611, 2, 1, 2031612, 2, 1, 2031613, 2, 1, 2031614, 2, 1, 2031615, 2, 0, 1900544, 3, 1, 1900545, 3, 1, 1900546, 3, 1, 1966078, 3, 1, 1966079, 3, 1, 1966080, 3, 0, 1966081, 3, 0, 1966082, 3, 1, 2031614, 3, 1, 2031615, 3, 0, 1900544, 4, 1, 1900545, 4, 1, 1900546, 4, 1, 1966078, 4, 1, 1966079, 4, 1, 1966080, 4, 0, 1966081, 4, 0, 1966082, 4, 1, 2031614, 4, 1, 2031615, 4, 0, 1900544, 5, 1, 1900545, 5, 1, 1900546, 5, 1, 1966078, 5, 1, 1966079, 5, 1, 1966080, 5, 0, 1966081, 5, 0, 1966082, 5, 1, 2031614, 5, 1, 2031615, 5, 0, 1900544, 6, 1, 1900545, 6, 1, 1900546, 6, 1, 1966078, 6, 1, 1966079, 6, 1, 1966080, 6, 1, 1966081, 6, 1, 1966082, 6, 1, 2031614, 6, 1, 2031615, 6, 1, 1900544, 65530, 1, 1900545, 65530, 1, 1900546, 65530, 1, 1966078, 65530, 1, 1966079, 65530, 1, 1966080, 65530, 1, 1966081, 65530, 1, 1966082, 65530, 1, 2031614, 65530, 1, 2031615, 65530, 1, 1900544, 65531, 1, 1900545, 65531, 1, 1900546, 65531, 1, 1966078, 65531, 1, 1966079, 65531, 1, 1966080, 65531, 0, 1966081, 65531, 0, 1966082, 65531, 1, 2031614, 65531, 1, 2031615, 65531, 0, 1900544, 65532, 1, 1900545, 65532, 1, 1900546, 65532, 1, 1966078, 65532, 1, 1966079, 65532, 1, 1966080, 65532, 0, 1966081, 65532, 0, 1966082, 65532, 1, 2031614, 65532, 1, 2031615, 65532, 0, 1900544, 65533, 1, 1900545, 65533, 1, 1900546, 65533, 1, 1966078, 65533, 1, 1966079, 65533, 1, 1966080, 65533, 0, 1966081, 65533, 0, 1966082, 65533, 1, 2031614, 65533, 1, 2031615, 65533, 0, 1900544, 65534, 1, 1900545, 65534, 1, 1900546, 65534, 1, 1900547, 65534, 1, 1900548, 65534, 1, 1900549, 65534, 1, 1900550, 65534, 1, 1966074, 65534, 1, 1966075, 65534, 1, 1966076, 65534, 1, 1966077, 65534, 1, 1966078, 65534, 1, 1966079, 65534, 1, 1966080, 65534, 0, 1966081, 65534, 0, 1966082, 65534, 1, 1966083, 65534, 1, 1966084, 65534, 1, 1966085, 65534, 1, 1966086, 65534, 1, 2031610, 65534, 1, 2031611, 65534, 1, 2031612, 65534, 1, 2031613, 65534, 1, 2031614, 65534, 1, 2031615, 65534, 0, 1900544, 65535, 1, 1900545, 65535, 1, 1900546, 65535, 1, 1900547, 65535, 1, 1900548, 65535, 1, 1900549, 65535, 1, 1900550, 65535, 1, 1966074, 65535, 1, 1966075, 65535, 1, 1966076, 65535, 1, 1966077, 65535, 1, 1966078, 65535, 1, 1966079, 65535, 1, 1966080, 65535, 0, 1966081, 65535, 0, 1966082, 65535, 0, 1966083, 65535, 0, 1966084, 65535, 0, 1966085, 65535, 0, 1966086, 65535, 1, 2031610, 65535, 1, 2031611, 65535, 0, 2031612, 65535, 0, 2031613, 65535, 0, 2031614, 65535, 0, 2031615, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, -5, 0 )
+"_editor_floor_": Vector3( 0, 30, 0 )
 }
 
 [node name="fallZone" type="Area" parent="environment"]
@@ -77,15 +81,32 @@ script = ExtResource( 8 )
 [node name="collisionShape" type="CollisionShape" parent="environment/fallZone"]
 shape = SubResource( 9 )
 
+[node name="bouncePad" parent="environment" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 50, -23 )
+script = ExtResource( 15 )
+
+[node name="bouncePad" parent="environment/bouncePad" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="bouncePad2" parent="environment" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 50, 1 )
+script = ExtResource( 15 )
+
+[node name="bouncePad" parent="environment/bouncePad2" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
 [node name="controlControllers" type="Node" parent="."]
 
 [node name="levelStart" parent="controlControllers" instance=ExtResource( 4 )]
+
+[node name="controlOn" parent="controlControllers" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 62, 1 )
 
 [node name="controlOff" parent="controlControllers" instance=ExtResource( 5 )]
 nextLevel = "res://levels/endScreen.tscn"
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 175, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 175, 1 )
 
 [node name="hud" parent="." instance=ExtResource( 6 )]
 
@@ -98,6 +119,10 @@ autoplay = true
 
 [connection signal="animation_finished" from="environment/gridMaps/mazeWallGridMap/animationPlayer" to="controlControllers/levelStart" method="_on_animationPlayer_animation_finished"]
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
+[connection signal="body_entered" from="environment/bouncePad/bouncePad" to="environment/bouncePad" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePad/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePad2/bouncePad" to="environment/bouncePad2" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePad2/bouncePad" to="player" method="_on_bouncePad_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
 [connection signal="body_entered" from="controlControllers/controlOff" to="fadeTransition" method="_on_controlOff_body_entered"]
 [connection signal="transitioned" from="fadeTransition" to="controlControllers/controlOff" method="_on_fadeTransition_transitioned"]
