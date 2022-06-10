@@ -16,4 +16,6 @@ func _on_animationPlayer_animation_finished(anim_name):
 
 func _on_controlOff_body_entered(body):
 	if body.name == "player":
+		get_parent().get_node("bgMusic").stop()
+		get_parent().get_node("levelEnd").play()
 		transition()

@@ -4,7 +4,7 @@ extends KinematicBody
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 10
+const JUMPPOWER = 15
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 const BOUNCEPOWER = 25
@@ -25,7 +25,7 @@ func _ready():
 		$pivot/camera.near = 0.05
 
 func _on_button_pressed():
-	global.startGame = true
+	global.gravity = true
 
 func _on_start_body_entered(body):
 	if body.name == "player":
@@ -57,8 +57,10 @@ func _physics_process(delta):
 	
 	#Ball Roll Sound
 	if Input.is_action_pressed("backward") or Input.is_action_pressed("forward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-		if is_on_floor():
+		if is_on_floor()and not Input.is_action_pressed("jump"):
 			$ballRoll.volume_db = 0
+	elif velocity.y > 0 or velocity.y < 0:
+		$ballRoll.volume_db = -80
 	else:
 		$ballRoll.volume_db = -80
 	
@@ -194,7 +196,7 @@ func _physics_process(delta):
 	
 	
 	##########Gravity##########
-	if not is_on_floor() and global.startGame == true:
+	if not is_on_floor() and global.gravity == true:
 		velocity.y -= GRAVITY * (2 * delta)
 	else:
 		velocity.y = 0

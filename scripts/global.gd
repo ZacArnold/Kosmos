@@ -1,6 +1,6 @@
 extends Node
 
-var startGame = true
+var gravity = true
 var controlAllowed = false
 
 var secretFound = false
