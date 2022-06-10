@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://materials/leather.tres" type="Material" id=1]
 [ext_resource path="res://animations/bounce.tres" type="Animation" id=2]
+[ext_resource path="res://sfx/bounce.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -20,3 +21,6 @@ shape = SubResource( 2 )
 
 [node name="animationPlayer" type="AnimationPlayer" parent="."]
 anims/bounce = ExtResource( 2 )
+
+[node name="audioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

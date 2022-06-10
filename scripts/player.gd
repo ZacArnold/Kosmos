@@ -7,7 +7,7 @@ const ACCELERATION = 0.075
 const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
-const BOUNCEPOWER = 50
+const BOUNCEPOWER = 25
 
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
@@ -37,9 +37,7 @@ func _on_fovFar_body_entered(body):
 		$pivot/camera.near = 0.05
 
 func _on_bouncePad_body_entered(body):
-	print("bounce")
 	if body.name == "player":
-		velocity.y = 0
 		velocity.y = BOUNCEPOWER
 
 func _physics_process(delta):
@@ -59,7 +57,8 @@ func _physics_process(delta):
 	
 	#Ball Roll Sound
 	if Input.is_action_pressed("backward") or Input.is_action_pressed("forward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-		$ballRoll.volume_db = 0
+		if is_on_floor():
+			$ballRoll.volume_db = 0
 	else:
 		$ballRoll.volume_db = -80
 	
