@@ -4,7 +4,7 @@ extends KinematicBody
 ##########Variable Setup##########
 const FRICTION = 0.075
 const ACCELERATION = 0.075
-const JUMPPOWER = 15
+const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
 const BOUNCEPOWER = 25

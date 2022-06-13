@@ -111,6 +111,7 @@ autoplay = true
 
 [node name="levelEnd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
+volume_db = 8.0
 
 [connection signal="animation_finished" from="environment/gridMaps/mazeWallGridMap/animationPlayer" to="controlControllers/levelStart" method="_on_animationPlayer_animation_finished"]
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
