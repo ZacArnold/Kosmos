@@ -7,7 +7,6 @@ const ACCELERATION = 0.075
 const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
-const BOUNCEPOWER = 25
 
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
@@ -38,7 +37,10 @@ func _on_fovFar_body_entered(body):
 
 func _on_bouncePad_body_entered(body):
 	if body.name == "player":
-		velocity.y = BOUNCEPOWER
+		var bouncePower = abs(velocity.y) * 1.25
+		if bouncePower > 25:
+			bouncePower = 25
+		velocity.y = bouncePower
 
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO

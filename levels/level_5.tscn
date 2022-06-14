@@ -5,7 +5,6 @@
 [ext_resource path="res://elements/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://elements/levelStart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://elements/controlOff.tscn" type="PackedScene" id=5]
-[ext_resource path="res://elements/hud.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/mazeWallGridMap.gd" type="Script" id=7]
 [ext_resource path="res://scripts/fallZone.gd" type="Script" id=8]
 [ext_resource path="res://elements/fadeTransition.tscn" type="PackedScene" id=9]
@@ -17,6 +16,7 @@
 [ext_resource path="res://scripts/bouncePad.gd" type="Script" id=15]
 [ext_resource path="res://elements/bouncePadArea.tscn" type="PackedScene" id=16]
 [ext_resource path="res://sfx/level_end.ogg" type="AudioStream" id=17]
+[ext_resource path="res://elements/blueSecret.tscn" type="PackedScene" id=18]
 
 [sub_resource type="BoxShape" id=9]
 
@@ -68,11 +68,11 @@ stream = ExtResource( 10 )
 mesh_library = ExtResource( 2 )
 use_in_baked_light = true
 data = {
-"cells": PoolIntArray( 1900544, 0, 1, 1900545, 0, 1, 1900546, 0, 1, 1900547, 0, 1, 1900548, 0, 1, 1900549, 0, 1, 1900550, 0, 1, 1966074, 0, 1, 1966075, 0, 1, 1966076, 0, 1, 1966077, 0, 1, 1966078, 0, 1, 1966079, 0, 1, 1966080, 0, 0, 1966081, 0, 0, 1966082, 0, 0, 1966083, 0, 0, 1966084, 0, 0, 1966085, 0, 0, 1966086, 0, 1, 2031610, 0, 1, 2031611, 0, 0, 2031612, 0, 0, 2031613, 0, 0, 2031614, 0, 0, 2031615, 0, 0, 1900544, 1, 1, 1900545, 1, 1, 1900546, 1, 1, 1900547, 1, 1, 1900548, 1, 1, 1900549, 1, 1, 1900550, 1, 1, 1966074, 1, 1, 1966075, 1, 1, 1966076, 1, 1, 1966077, 1, 1, 1966078, 1, 1, 1966079, 1, 1, 1966080, 1, 0, 1966081, 1, 0, 1966082, 1, 0, 1966083, 1, 0, 1966084, 1, 0, 1966085, 1, 0, 1966086, 1, 1, 2031610, 1, 1, 2031611, 1, 0, 2031612, 1, 0, 2031613, 1, 0, 2031614, 1, 0, 2031615, 1, 0, 1900544, 2, 1, 1900545, 2, 1, 1900546, 2, 1, 1900547, 2, 1, 1900548, 2, 1, 1900549, 2, 1, 1900550, 2, 1, 1966074, 2, 1, 1966075, 2, 1, 1966076, 2, 1, 1966077, 2, 1, 1966078, 2, 1, 1966079, 2, 1, 1966080, 2, 0, 1966081, 2, 0, 1966082, 2, 1, 1966083, 2, 1, 1966084, 2, 1, 1966085, 2, 1, 1966086, 2, 1, 2031610, 2, 1, 2031611, 2, 1, 2031612, 2, 1, 2031613, 2, 1, 2031614, 2, 1, 2031615, 2, 0, 1900544, 3, 1, 1900545, 3, 1, 1900546, 3, 1, 1966078, 3, 1, 1966079, 3, 1, 1966080, 3, 0, 1966081, 3, 0, 1966082, 3, 1, 2031614, 3, 1, 2031615, 3, 0, 1900544, 4, 1, 1900545, 4, 1, 1900546, 4, 1, 1966078, 4, 1, 1966079, 4, 1, 1966080, 4, 0, 1966081, 4, 0, 1966082, 4, 1, 2031614, 4, 1, 2031615, 4, 0, 1900544, 5, 1, 1900545, 5, 1, 1900546, 5, 1, 1966078, 5, 1, 1966079, 5, 1, 1966080, 5, 0, 1966081, 5, 0, 1966082, 5, 1, 2031614, 5, 1, 2031615, 5, 0, 1900544, 6, 1, 1900545, 6, 1, 1900546, 6, 1, 1966078, 6, 1, 1966079, 6, 1, 1966080, 6, 1, 1966081, 6, 1, 1966082, 6, 1, 2031614, 6, 1, 2031615, 6, 1, 1900544, 65530, 1, 1900545, 65530, 1, 1900546, 65530, 1, 1966078, 65530, 1, 1966079, 65530, 1, 1966080, 65530, 1, 1966081, 65530, 1, 1966082, 65530, 1, 2031614, 65530, 1, 2031615, 65530, 1, 1900544, 65531, 1, 1900545, 65531, 1, 1900546, 65531, 1, 1966078, 65531, 1, 1966079, 65531, 1, 1966080, 65531, 0, 1966081, 65531, 0, 1966082, 65531, 1, 2031614, 65531, 1, 2031615, 65531, 0, 1900544, 65532, 1, 1900545, 65532, 1, 1900546, 65532, 1, 1966078, 65532, 1, 1966079, 65532, 1, 1966080, 65532, 0, 1966081, 65532, 0, 1966082, 65532, 1, 2031614, 65532, 1, 2031615, 65532, 0, 1900544, 65533, 1, 1900545, 65533, 1, 1900546, 65533, 1, 1966078, 65533, 1, 1966079, 65533, 1, 1966080, 65533, 0, 1966081, 65533, 0, 1966082, 65533, 1, 2031614, 65533, 1, 2031615, 65533, 0, 1900544, 65534, 1, 1900545, 65534, 1, 1900546, 65534, 1, 1900547, 65534, 1, 1900548, 65534, 1, 1900549, 65534, 1, 1900550, 65534, 1, 1966074, 65534, 1, 1966075, 65534, 1, 1966076, 65534, 1, 1966077, 65534, 1, 1966078, 65534, 1, 1966079, 65534, 1, 1966080, 65534, 0, 1966081, 65534, 0, 1966082, 65534, 1, 1966083, 65534, 1, 1966084, 65534, 1, 1966085, 65534, 1, 1966086, 65534, 1, 2031610, 65534, 1, 2031611, 65534, 1, 2031612, 65534, 1, 2031613, 65534, 1, 2031614, 65534, 1, 2031615, 65534, 0, 1900544, 65535, 1, 1900545, 65535, 1, 1900546, 65535, 1, 1900547, 65535, 1, 1900548, 65535, 1, 1900549, 65535, 1, 1900550, 65535, 1, 1966074, 65535, 1, 1966075, 65535, 1, 1966076, 65535, 1, 1966077, 65535, 1, 1966078, 65535, 1, 1966079, 65535, 1, 1966080, 65535, 0, 1966081, 65535, 0, 1966082, 65535, 0, 1966083, 65535, 0, 1966084, 65535, 0, 1966085, 65535, 0, 1966086, 65535, 1, 2031610, 65535, 1, 2031611, 65535, 0, 2031612, 65535, 0, 2031613, 65535, 0, 2031614, 65535, 0, 2031615, 65535, 0 )
+"cells": PoolIntArray( 1638385, 0, 1, 1638386, 0, 1, 1638387, 0, 1, 1638388, 0, 1, 1638389, 0, 1, 1703915, 0, 1, 1703916, 0, 1, 1703917, 0, 1, 1703921, 0, 1, 1703922, 0, 0, 1703923, 0, 0, 1703924, 0, 0, 1703925, 0, 1, 1769451, 0, 1, 1769452, 0, 0, 1769453, 0, 1, 1900544, 0, 1, 1900545, 0, 1, 1900546, 0, 1, 1900547, 0, 1, 1900548, 0, 1, 1900549, 0, 1, 1900550, 0, 1, 1966074, 0, 1, 1966075, 0, 1, 1966076, 0, 1, 1966077, 0, 1, 1966078, 0, 1, 1966079, 0, 1, 1966080, 0, 0, 1966081, 0, 0, 1966082, 0, 0, 1966083, 0, 0, 1966084, 0, 0, 1966085, 0, 0, 1966086, 0, 1, 2031610, 0, 1, 2031611, 0, 0, 2031612, 0, 0, 2031613, 0, 0, 2031614, 0, 0, 2031615, 0, 0, 1638385, 1, 1, 1638386, 1, 1, 1638387, 1, 1, 1638388, 1, 1, 1638389, 1, 1, 1703915, 1, 1, 1703916, 1, 1, 1703917, 1, 1, 1703921, 1, 1, 1703922, 1, 0, 1703923, 1, 0, 1703924, 1, 0, 1703925, 1, 1, 1769451, 1, 1, 1769452, 1, 1, 1769453, 1, 1, 1900544, 1, 1, 1900545, 1, 1, 1900546, 1, 1, 1900547, 1, 1, 1900548, 1, 1, 1900549, 1, 1, 1900550, 1, 1, 1966074, 1, 1, 1966075, 1, 1, 1966076, 1, 1, 1966077, 1, 1, 1966078, 1, 1, 1966079, 1, 1, 1966080, 1, 0, 1966081, 1, 0, 1966082, 1, 0, 1966083, 1, 0, 1966084, 1, 0, 1966085, 1, 0, 1966086, 1, 1, 2031610, 1, 1, 2031611, 1, 0, 2031612, 1, 0, 2031613, 1, 0, 2031614, 1, 0, 2031615, 1, 0, 1638385, 2, 1, 1638386, 2, 1, 1638387, 2, 1, 1638388, 2, 1, 1638389, 2, 1, 1703921, 2, 1, 1703922, 2, 1, 1703923, 2, 1, 1703924, 2, 1, 1703925, 2, 1, 1900544, 2, 1, 1900545, 2, 1, 1900546, 2, 1, 1900547, 2, 1, 1900548, 2, 1, 1900549, 2, 1, 1900550, 2, 1, 1966074, 2, 1, 1966075, 2, 1, 1966076, 2, 1, 1966077, 2, 1, 1966078, 2, 1, 1966079, 2, 1, 1966080, 2, 0, 1966081, 2, 0, 1966082, 2, 1, 1966083, 2, 1, 1966084, 2, 1, 1966085, 2, 1, 1966086, 2, 1, 2031610, 2, 1, 2031611, 2, 1, 2031612, 2, 1, 2031613, 2, 1, 2031614, 2, 1, 2031615, 2, 0, 1900544, 3, 1, 1900545, 3, 1, 1900546, 3, 1, 1966078, 3, 1, 1966079, 3, 1, 1966080, 3, 0, 1966081, 3, 0, 1966082, 3, 1, 2031614, 3, 1, 2031615, 3, 0, 1900544, 4, 1, 1900545, 4, 1, 1900546, 4, 1, 1966078, 4, 1, 1966079, 4, 1, 1966080, 4, 0, 1966081, 4, 0, 1966082, 4, 1, 2031614, 4, 1, 2031615, 4, 0, 1900544, 5, 1, 1900545, 5, 1, 1900546, 5, 1, 1966078, 5, 1, 1966079, 5, 1, 1966080, 5, 0, 1966081, 5, 0, 1966082, 5, 1, 2031614, 5, 1, 2031615, 5, 0, 1900544, 6, 1, 1900545, 6, 1, 1900546, 6, 1, 1966078, 6, 1, 1966079, 6, 1, 1966080, 6, 1, 1966081, 6, 1, 1966082, 6, 1, 2031614, 6, 1, 2031615, 6, 1, 1572864, 11, 1, 1572865, 11, 1, 1572866, 11, 1, 1638398, 11, 1, 1638399, 11, 1, 1638400, 11, 1, 1638401, 11, 1, 1638402, 11, 1, 1703934, 11, 1, 1703935, 11, 1, 1572864, 12, 1, 1572865, 12, 1, 1572866, 12, 1, 1638398, 12, 1, 1638399, 12, 1, 1638400, 12, 0, 1638401, 12, 0, 1638402, 12, 1, 1703934, 12, 1, 1703935, 12, 0, 1572864, 13, 1, 1572865, 13, 1, 1572866, 13, 1, 1638398, 13, 1, 1638399, 13, 1, 1638400, 13, 0, 1638401, 13, 0, 1638402, 13, 1, 1703934, 13, 1, 1703935, 13, 0, 1572864, 14, 1, 1572865, 14, 1, 1572866, 14, 1, 1638398, 14, 1, 1638399, 14, 1, 1638400, 14, 0, 1638401, 14, 0, 1638402, 14, 1, 1703934, 14, 1, 1703935, 14, 0, 1572864, 15, 1, 1572865, 15, 1, 1572866, 15, 1, 1638398, 15, 1, 1638399, 15, 1, 1638400, 15, 1, 1638401, 15, 1, 1638402, 15, 1, 1703934, 15, 1, 1703935, 15, 1, 3080179, 27, 1, 3080180, 27, 1, 3080181, 27, 1, 3080182, 27, 1, 3080183, 27, 1, 3145715, 27, 1, 3145716, 27, 1, 3145717, 27, 1, 3145718, 27, 1, 3145719, 27, 1, 3080179, 28, 1, 3080180, 28, 1, 3080181, 28, 1, 3080182, 28, 1, 3080183, 28, 1, 3145715, 28, 1, 3145716, 28, 0, 3145717, 28, 0, 3145718, 28, 0, 3145719, 28, 1, 3080179, 29, 1, 3080180, 29, 1, 3080181, 29, 1, 3080182, 29, 1, 3080183, 29, 1, 3145715, 29, 1, 3145716, 29, 0, 3145717, 29, 0, 3145718, 29, 0, 3145719, 29, 1, 3080179, 30, 1, 3080180, 30, 1, 3080181, 30, 1, 3080182, 30, 1, 3080183, 30, 1, 3145715, 30, 1, 3145716, 30, 0, 3145717, 30, 0, 3145718, 30, 0, 3145719, 30, 1, 3080179, 31, 1, 3080180, 31, 1, 3080181, 31, 1, 3080182, 31, 1, 3080183, 31, 1, 3145715, 31, 1, 3145716, 31, 1, 3145717, 31, 1, 3145718, 31, 1, 3145719, 31, 1, 2031616, 65517, 1, 2031617, 65517, 1, 2031618, 65517, 1, 2097150, 65517, 1, 2097151, 65517, 1, 2097152, 65517, 1, 2097153, 65517, 1, 2097154, 65517, 1, 2162686, 65517, 1, 2162687, 65517, 1, 2031616, 65518, 1, 2031617, 65518, 1, 2031618, 65518, 1, 2097150, 65518, 1, 2097151, 65518, 1, 2097152, 65518, 0, 2097153, 65518, 0, 2097154, 65518, 1, 2162686, 65518, 1, 2162687, 65518, 0, 2031616, 65519, 1, 2031617, 65519, 1, 2031618, 65519, 1, 2097150, 65519, 1, 2097151, 65519, 1, 2097152, 65519, 0, 2097153, 65519, 0, 2097154, 65519, 1, 2162686, 65519, 1, 2162687, 65519, 0, 2031616, 65520, 1, 2031617, 65520, 1, 2031618, 65520, 1, 2097150, 65520, 1, 2097151, 65520, 1, 2097152, 65520, 0, 2097153, 65520, 0, 2097154, 65520, 1, 2162686, 65520, 1, 2162687, 65520, 0, 2031616, 65521, 1, 2031617, 65521, 1, 2031618, 65521, 1, 2097150, 65521, 1, 2097151, 65521, 1, 2097152, 65521, 1, 2097153, 65521, 1, 2097154, 65521, 1, 2162686, 65521, 1, 2162687, 65521, 1, 1769450, 65526, 1, 1769451, 65526, 1, 1769452, 65526, 1, 1769453, 65526, 1, 1769454, 65526, 1, 1834986, 65526, 1, 1834987, 65526, 1, 1834988, 65526, 1, 1834989, 65526, 1, 1834990, 65526, 1, 1769450, 65527, 1, 1769451, 65527, 1, 1769452, 65527, 1, 1769453, 65527, 1, 1769454, 65527, 1, 1834979, 65527, 1, 1834980, 65527, 1, 1834981, 65527, 1, 1834986, 65527, 1, 1834987, 65527, 0, 1834988, 65527, 0, 1834989, 65527, 0, 1834990, 65527, 1, 1900515, 65527, 1, 1900516, 65527, 1, 1900517, 65527, 1, 1769450, 65528, 1, 1769451, 65528, 1, 1769452, 65528, 1, 1769453, 65528, 1, 1769454, 65528, 1, 1834979, 65528, 1, 1834980, 65528, 1, 1834981, 65528, 1, 1834986, 65528, 1, 1834987, 65528, 0, 1834988, 65528, 0, 1834989, 65528, 0, 1834990, 65528, 1, 1900515, 65528, 1, 1900516, 65528, 0, 1900517, 65528, 1, 1769450, 65529, 1, 1769451, 65529, 1, 1769452, 65529, 1, 1769453, 65529, 1, 1769454, 65529, 1, 1834979, 65529, 1, 1834980, 65529, 1, 1834981, 65529, 1, 1834986, 65529, 1, 1834987, 65529, 0, 1834988, 65529, 0, 1834989, 65529, 0, 1834990, 65529, 1, 1900515, 65529, 1, 1900516, 65529, 1, 1900517, 65529, 1, 1769450, 65530, 1, 1769451, 65530, 1, 1769452, 65530, 1, 1769453, 65530, 1, 1769454, 65530, 1, 1834986, 65530, 1, 1834987, 65530, 1, 1834988, 65530, 1, 1834989, 65530, 1, 1834990, 65530, 1, 1900544, 65530, 1, 1900545, 65530, 1, 1900546, 65530, 1, 1966078, 65530, 1, 1966079, 65530, 1, 1966080, 65530, 1, 1966081, 65530, 1, 1966082, 65530, 1, 2031614, 65530, 1, 2031615, 65530, 1, 1900544, 65531, 1, 1900545, 65531, 1, 1900546, 65531, 1, 1966078, 65531, 1, 1966079, 65531, 1, 1966080, 65531, 0, 1966081, 65531, 0, 1966082, 65531, 1, 2031614, 65531, 1, 2031615, 65531, 0, 1900544, 65532, 1, 1900545, 65532, 1, 1900546, 65532, 1, 1966078, 65532, 1, 1966079, 65532, 1, 1966080, 65532, 0, 1966081, 65532, 0, 1966082, 65532, 1, 2031614, 65532, 1, 2031615, 65532, 0, 1900544, 65533, 1, 1900545, 65533, 1, 1900546, 65533, 1, 1966078, 65533, 1, 1966079, 65533, 1, 1966080, 65533, 0, 1966081, 65533, 0, 1966082, 65533, 1, 2031614, 65533, 1, 2031615, 65533, 0, 1638385, 65534, 1, 1638386, 65534, 1, 1638387, 65534, 1, 1638388, 65534, 1, 1638389, 65534, 1, 1703921, 65534, 1, 1703922, 65534, 1, 1703923, 65534, 1, 1703924, 65534, 1, 1703925, 65534, 1, 1900544, 65534, 1, 1900545, 65534, 1, 1900546, 65534, 1, 1900547, 65534, 1, 1900548, 65534, 1, 1900549, 65534, 1, 1900550, 65534, 1, 1966074, 65534, 1, 1966075, 65534, 1, 1966076, 65534, 1, 1966077, 65534, 1, 1966078, 65534, 1, 1966079, 65534, 1, 1966080, 65534, 0, 1966081, 65534, 0, 1966082, 65534, 1, 1966083, 65534, 1, 1966084, 65534, 1, 1966085, 65534, 1, 1966086, 65534, 1, 2031610, 65534, 1, 2031611, 65534, 1, 2031612, 65534, 1, 2031613, 65534, 1, 2031614, 65534, 1, 2031615, 65534, 0, 1638385, 65535, 1, 1638386, 65535, 1, 1638387, 65535, 1, 1638388, 65535, 1, 1638389, 65535, 1, 1703915, 65535, 1, 1703916, 65535, 1, 1703917, 65535, 1, 1703921, 65535, 1, 1703922, 65535, 0, 1703923, 65535, 0, 1703924, 65535, 0, 1703925, 65535, 1, 1769451, 65535, 1, 1769452, 65535, 1, 1769453, 65535, 1, 1900544, 65535, 1, 1900545, 65535, 1, 1900546, 65535, 1, 1900547, 65535, 1, 1900548, 65535, 1, 1900549, 65535, 1, 1900550, 65535, 1, 1966074, 65535, 1, 1966075, 65535, 1, 1966076, 65535, 1, 1966077, 65535, 1, 1966078, 65535, 1, 1966079, 65535, 1, 1966080, 65535, 0, 1966081, 65535, 0, 1966082, 65535, 0, 1966083, 65535, 0, 1966084, 65535, 0, 1966085, 65535, 0, 1966086, 65535, 1, 2031610, 65535, 1, 2031611, 65535, 0, 2031612, 65535, 0, 2031613, 65535, 0, 2031614, 65535, 0, 2031615, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 30, 0 )
+"_editor_floor_": Vector3( 0, 32, 0 )
 }
 
 [node name="fallZone" type="Area" parent="environment"]
@@ -82,18 +82,55 @@ script = ExtResource( 8 )
 [node name="collisionShape" type="CollisionShape" parent="environment/fallZone"]
 shape = SubResource( 9 )
 
-[node name="bouncePad" parent="environment" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 50, -23 )
+[node name="bouncePads" type="Node" parent="environment"]
+
+[node name="bouncePad" parent="environment/bouncePads" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 49, -23 )
 script = ExtResource( 15 )
 
-[node name="bouncePad" parent="environment/bouncePad" instance=ExtResource( 16 )]
+[node name="bouncePad" parent="environment/bouncePads/bouncePad" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="bouncePad2" parent="environment" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 50, 1 )
+[node name="bouncePad2" parent="environment/bouncePads" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 49, 1 )
 script = ExtResource( 15 )
 
-[node name="bouncePad" parent="environment/bouncePad2" instance=ExtResource( 16 )]
+[node name="bouncePad" parent="environment/bouncePads/bouncePad2" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="bouncePad3" parent="environment/bouncePads" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 47, 45 )
+script = ExtResource( 15 )
+
+[node name="bouncePad" parent="environment/bouncePads/bouncePad3" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="bouncePad4" parent="environment/bouncePads" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 63, 59 )
+script = ExtResource( 15 )
+
+[node name="bouncePad" parent="environment/bouncePads/bouncePad4" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="bouncePad5" parent="environment/bouncePads" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 79, 59 )
+script = ExtResource( 15 )
+
+[node name="bouncePad" parent="environment/bouncePads/bouncePad5" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="bouncePad6" parent="environment/bouncePads" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 63, 1 )
+script = ExtResource( 15 )
+
+[node name="bouncePad" parent="environment/bouncePads/bouncePad6" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="bouncePad7" parent="environment/bouncePads" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 77, 1 )
+script = ExtResource( 15 )
+
+[node name="bouncePad" parent="environment/bouncePads/bouncePad7" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="controlControllers" type="Node" parent="."]
@@ -106,10 +143,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 62, 1 )
 [node name="controlOff" parent="controlControllers" instance=ExtResource( 5 )]
 nextLevel = "res://levels/endScreen.tscn"
 
+[node name="blueSecret" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 90, 1 )
+
 [node name="player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 175, 1 )
-
-[node name="hud" parent="." instance=ExtResource( 6 )]
 
 [node name="fadeTransition" parent="." instance=ExtResource( 9 )]
 
@@ -123,10 +161,22 @@ stream = ExtResource( 17 )
 
 [connection signal="animation_finished" from="environment/gridMaps/mazeWallGridMap/animationPlayer" to="controlControllers/levelStart" method="_on_animationPlayer_animation_finished"]
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
-[connection signal="body_entered" from="environment/bouncePad/bouncePad" to="environment/bouncePad" method="_on_bouncePad_body_entered"]
-[connection signal="body_entered" from="environment/bouncePad/bouncePad" to="player" method="_on_bouncePad_body_entered"]
-[connection signal="body_entered" from="environment/bouncePad2/bouncePad" to="environment/bouncePad2" method="_on_bouncePad_body_entered"]
-[connection signal="body_entered" from="environment/bouncePad2/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad/bouncePad" to="environment/bouncePads/bouncePad" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad2/bouncePad" to="environment/bouncePads/bouncePad2" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad2/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad3/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad3/bouncePad" to="environment/bouncePads/bouncePad3" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad4/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad4/bouncePad" to="environment/bouncePads/bouncePad4" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad5/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad5/bouncePad" to="environment/bouncePads/bouncePad5" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad6/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad6/bouncePad" to="environment/bouncePads/bouncePad6" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad7/bouncePad" to="player" method="_on_bouncePad_body_entered"]
+[connection signal="body_entered" from="environment/bouncePads/bouncePad7/bouncePad" to="environment/bouncePads/bouncePad7" method="_on_bouncePad_body_entered"]
 [connection signal="body_entered" from="controlControllers/levelStart" to="environment/gridMaps/mazeWallGridMap" method="_on_levelStart_body_entered"]
+[connection signal="body_entered" from="controlControllers/controlOn" to="blueSecret" method="_on_controlOn_body_entered"]
 [connection signal="body_entered" from="controlControllers/controlOff" to="fadeTransition" method="_on_controlOff_body_entered"]
+[connection signal="body_entered" from="blueSecret" to="blueSecret" method="_on_secret_body_entered"]
 [connection signal="transitioned" from="fadeTransition" to="controlControllers/controlOff" method="_on_fadeTransition_transitioned"]
