@@ -82,6 +82,34 @@ script = ExtResource( 8 )
 [node name="collisionShape" type="CollisionShape" parent="environment/fallZone"]
 shape = SubResource( 9 )
 
+[node name="fallZone2" type="Area" parent="environment"]
+transform = Transform( 125, 0, 0, 0, 1, 0, 0, 0, 125, 0, 20, -81 )
+script = ExtResource( 8 )
+
+[node name="collisionShape" type="CollisionShape" parent="environment/fallZone2"]
+shape = SubResource( 9 )
+
+[node name="fallZone3" type="Area" parent="environment"]
+transform = Transform( 125, 0, 0, 0, 1, 0, 0, 0, 50, 0, 20, 104 )
+script = ExtResource( 8 )
+
+[node name="collisionShape" type="CollisionShape" parent="environment/fallZone3"]
+shape = SubResource( 9 )
+
+[node name="fallZone4" type="Area" parent="environment"]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 5, 60, 20, 49 )
+script = ExtResource( 8 )
+
+[node name="collisionShape" type="CollisionShape" parent="environment/fallZone4"]
+shape = SubResource( 9 )
+
+[node name="fallZone5" type="Area" parent="environment"]
+transform = Transform( 50, 0, 0, 0, 1, 0, 0, 0, 5, -100, 20, 49 )
+script = ExtResource( 8 )
+
+[node name="collisionShape" type="CollisionShape" parent="environment/fallZone5"]
+shape = SubResource( 9 )
+
 [node name="bouncePads" type="Node" parent="environment"]
 
 [node name="bouncePad" parent="environment/bouncePads" instance=ExtResource( 11 )]
@@ -165,6 +193,10 @@ stream = ExtResource( 17 )
 
 [connection signal="animation_finished" from="environment/gridMaps/mazeWallGridMap/animationPlayer" to="controlControllers/levelStart" method="_on_animationPlayer_animation_finished"]
 [connection signal="body_entered" from="environment/fallZone" to="environment/fallZone" method="_on_fallZone_body_entered"]
+[connection signal="body_entered" from="environment/fallZone2" to="environment/fallZone2" method="_on_fallZone_body_entered"]
+[connection signal="body_entered" from="environment/fallZone3" to="environment/fallZone3" method="_on_fallZone_body_entered"]
+[connection signal="body_entered" from="environment/fallZone4" to="environment/fallZone4" method="_on_fallZone_body_entered"]
+[connection signal="body_entered" from="environment/fallZone5" to="environment/fallZone5" method="_on_fallZone_body_entered"]
 [connection signal="body_entered" from="environment/bouncePads/bouncePad/bouncePad" to="environment/bouncePads/bouncePad" method="_on_bouncePad_body_entered"]
 [connection signal="body_entered" from="environment/bouncePads/bouncePad/bouncePad" to="player" method="_on_bouncePad_body_entered"]
 [connection signal="body_entered" from="environment/bouncePads/bouncePad2/bouncePad" to="environment/bouncePads/bouncePad2" method="_on_bouncePad_body_entered"]
