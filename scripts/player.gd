@@ -84,6 +84,9 @@ func _physics_process(delta):
 	if get_tree().current_scene.name == "level_4":
 		if global.secretFound == true:
 			global.goldSecret = true
+	if get_tree().current_scene.name == "level_5":
+		if global.secretFound == true:
+			global.blueSecret = true
 	
 	##########Camera Control##########
 	if Input.is_action_just_pressed("camera_pivot_left") and global.controlAllowed == true:

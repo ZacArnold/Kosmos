@@ -10,7 +10,7 @@
 [ext_resource path="res://elements/endScreenHud.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 35
+size = 30
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
@@ -24,7 +24,7 @@ environment = ExtResource( 1 )
 mesh_library = ExtResource( 6 )
 use_in_baked_light = true
 data = {
-"cells": PoolIntArray( -131072, 0, 1, -131071, 0, 1, -65538, 0, 1, -65537, 0, 1, -65541, 1, 1, -65540, 1, 1, -65539, 1, 1, -65541, 2, 1, -65540, 2, 1, -65539, 2, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
+"cells": PoolIntArray( -65541, 1, 1, -65540, 1, 1, -65539, 1, 1, -65538, 1, 1, -65541, 2, 1, -65540, 2, 1, -65539, 2, 1, -65538, 2, 1, -327680, 65534, 1, -327679, 65534, 1, -262146, 65534, 1, -262145, 65534, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -61,23 +61,20 @@ uppercase = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 755.0
-margin_top = 640.0
+margin_top = 625.0
 margin_right = -754.0
-margin_bottom = -274.0
+margin_bottom = -289.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "QUIT"
 flat = true
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
 [node name="hud" parent="." instance=ExtResource( 8 )]
-offset = Vector2( 50, -60 )
-transform = Transform2D( 1, 0, 0, 1, 50, -60 )
+offset = Vector2( 90, -60 )
+transform = Transform2D( 1, 0, 0, 1, 90, -60 )
 
 [node name="bgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
