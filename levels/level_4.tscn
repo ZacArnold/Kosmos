@@ -63,7 +63,6 @@ anims/wallRise_4 = ExtResource( 13 )
 stream = ExtResource( 12 )
 
 [node name="platformGridMap" type="GridMap" parent="environment/gridMaps"]
-visible = false
 mesh_library = ExtResource( 2 )
 use_in_baked_light = true
 data = {

@@ -7,6 +7,7 @@ const ACCELERATION = 0.075
 const JUMPPOWER = 10
 const GRAVITY = 9.8
 const PIVOTSPEED = 90
+const BOUNCEPOWER = 25
 
 var velocity = Vector3.ZERO
 var rotateVelocity = Vector3.ZERO
@@ -37,10 +38,7 @@ func _on_fovFar_body_entered(body):
 
 func _on_bouncePad_body_entered(body):
 	if body.name == "player":
-		var bouncePower = abs(velocity.y) * 1.25
-		if bouncePower > 25:
-			bouncePower = 25
-		velocity.y = bouncePower
+		velocity.y = BOUNCEPOWER
 
 func _physics_process(delta):
 	var inputVelocity = Vector3.ZERO
@@ -58,13 +56,20 @@ func _physics_process(delta):
 		get_tree().quit()
 	
 	#Ball Roll Sound
-	if Input.is_action_pressed("backward") or Input.is_action_pressed("forward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-		if is_on_floor()and not Input.is_action_pressed("jump"):
-			$ballRoll.volume_db = 0
-	elif velocity.y > 0 or velocity.y < 0:
-		$ballRoll.volume_db = -80
+	if is_on_floor() and velocity.x > 9:
+		$ballRoll.volume_db = 0
+	elif is_on_floor() and velocity.z > 9:
+		$ballRoll.volume_db = 0
+	elif is_on_floor() and velocity.x < -9:
+		$ballRoll.volume_db = 0
+	elif is_on_floor() and velocity.z < -9:
+		$ballRoll.volume_db = 0
 	else:
 		$ballRoll.volume_db = -80
+	
+	#No gravity on end screen
+	if get_tree().current_scene.name == "endScreen":
+		global.gravity = false
 	
 	#Secret Collection
 	if get_tree().current_scene.name == "level_1":

@@ -118,7 +118,7 @@ shape = SubResource( 10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 65, -70 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 43, -23 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 475, -23 )
 
 [node name="fadeTransition" parent="." instance=ExtResource( 9 )]
 

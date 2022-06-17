@@ -12,3 +12,4 @@ func _on_fadeTransition_transitioned():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(nextLevel)
 	global.secretFound = false
+
