@@ -8,7 +8,7 @@ func transition():
 	$animationPlayer.play("fadeToBlack")
 
 func _ready():
-	if get_tree().current_scene.name == "level_2" or get_tree().current_scene.name == "level_3" or get_tree().current_scene.name == "level_4" or get_tree().current_scene.name == "level_5":
+	if get_tree().current_scene.name == "level_2" or get_tree().current_scene.name == "level_3" or get_tree().current_scene.name == "level_4" or get_tree().current_scene.name == "level_5" or get_tree().current_scene.name == "endScreen":
 		$animationPlayer.play("fadeToNormal")
 
 func _on_animationPlayer_animation_finished(anim_name):

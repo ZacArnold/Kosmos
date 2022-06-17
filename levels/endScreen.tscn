@@ -24,11 +24,11 @@ environment = ExtResource( 1 )
 mesh_library = ExtResource( 6 )
 use_in_baked_light = true
 data = {
-"cells": PoolIntArray( -65541, 1, 1, -65540, 1, 1, -65539, 1, 1, -65538, 1, 1, -65541, 2, 1, -65540, 2, 1, -65539, 2, 1, -65538, 2, 1, -327680, 65534, 1, -327679, 65534, 1, -262146, 65534, 1, -262145, 65534, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
+"cells": PoolIntArray( -131078, 1, 1, -131077, 1, 1, -131076, 1, 1, -131075, 1, 1, -131078, 2, 1, -131077, 2, 1, -131076, 2, 1, -131075, 2, 1, -327680, 65534, 1, -327679, 65534, 1, -262146, 65534, 1, -262145, 65534, 1, 65536, 65535, 1, 65537, 65535, 1, 131070, 65535, 1, 131071, 65535, 1 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, -2, 0 )
+"_editor_floor_": Vector3( 0, -3, 0 )
 }
 
 [node name="directionalLight" type="DirectionalLight" parent="."]
@@ -73,8 +73,6 @@ script = ExtResource( 4 )
 [node name="player" parent="." instance=ExtResource( 2 )]
 
 [node name="hud" parent="." instance=ExtResource( 8 )]
-offset = Vector2( 90, -60 )
-transform = Transform2D( 1, 0, 0, 1, 90, -60 )
 
 [node name="bgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
