@@ -181,7 +181,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 70, 49 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 90, 1 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 65, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 665, 1 )
 
 [node name="fadeTransition" parent="." instance=ExtResource( 9 )]
 
